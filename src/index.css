@@ -53,4 +53,8 @@
     body {
         @apply bg-background text-foreground antialiased;
     }
+
+    .game-card-gradient {
+        @apply absolute inset-0 bg-gradient-to-t via-black/40 to-transparent;
+    }
 }
