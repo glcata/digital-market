@@ -54,7 +54,19 @@
         @apply bg-background text-foreground antialiased;
     }
 
+    .game-card {
+        @apply bg-card rounded-lg overflow-hidden transition-all duration-200 hover:shadow-lg hover:shadow-red-500/20 relative;
+    }
+
+    .game-card-image {
+        @apply w-full aspect-[16/9] object-cover;
+    }
+
     .game-card-gradient {
-        @apply absolute inset-0 bg-gradient-to-t via-black/40 to-transparent;
+        @apply absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60;
+    }
+
+    .card-hover-effect {
+        @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-xl;
     }
 }
