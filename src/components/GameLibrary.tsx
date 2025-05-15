@@ -4,7 +4,7 @@ import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Tabs, TabsList, TabsTrigger} from '@/components/ui/tabs';
 import {Game} from '@/lib/types';
-import {LayoutGrid, LayoutList, Search, SlidersHorizontal, X, ChevronLeft, ChevronRight} from 'lucide-react';
+import {ChevronLeft, ChevronRight, LayoutGrid, LayoutList, Search, SlidersHorizontal, X} from 'lucide-react';
 import {Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger,} from '@/components/ui/sheet';
 import {Checkbox} from '@/components/ui/checkbox';
 import {Label} from '@/components/ui/label';
@@ -55,17 +55,11 @@ const GameLibrary = () => {
     };
 
     const filteredGames = games?.filter((game: Game) => {
-        if (searchQuery && !game.title.toLowerCase().includes(searchQuery.toLowerCase())) {
-            return false;
-        }
+        if (searchQuery && !game.title.toLowerCase().includes(searchQuery.toLowerCase())) return false;
 
-        if (selectedPlatforms.length > 0 && !game.platforms.some(platform => selectedPlatforms.includes(platform))) {
-            return false;
-        }
+        if (selectedPlatforms.length > 0 && !game.platforms.some(platform => selectedPlatforms.includes(platform))) return false;
 
-        if (selectedGenres.length > 0 && !game.genres.some(genre => selectedGenres.includes(genre))) {
-            return false;
-        }
+        if (selectedGenres.length > 0 && !game.genres.some(genre => selectedGenres.includes(genre))) return false;
 
         return true;
     }) ?? [];

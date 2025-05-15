@@ -55,7 +55,7 @@
     }
 
     .game-card {
-        @apply bg-card rounded-lg overflow-hidden transition-all duration-200 hover:shadow-lg hover:shadow-red-500/20 relative;
+        @apply bg-card rounded-lg opacity-70 from-black/50 overflow-hidden transition-all duration-200 hover:opacity-100 hover:from-black/10 hover:-translate-x-1 hover:translate-y-1 hover:shadow-lg hover:shadow-red-500/15 relative;
     }
 
     .game-card-image {
@@ -63,7 +63,7 @@
     }
 
     .game-card-gradient {
-        @apply absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60;
+        @apply absolute inset-0 bg-gradient-to-t via-black/40 to-transparent;
     }
 
     .card-hover-effect {

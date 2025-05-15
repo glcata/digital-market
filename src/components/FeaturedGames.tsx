@@ -8,6 +8,7 @@ import {Skeleton} from '@/components/ui/skeleton';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import '@/components/FeaturedGames.css';
 
 const FeaturedGames = () => {
     const {data: featuredGames, isLoading, error} = useGetFeaturedGamesQuery();
