@@ -6,14 +6,21 @@ import {Provider} from 'react-redux';
 import {configureStore} from '@reduxjs/toolkit';
 import Home from '@/pages/Home';
 import NotFound from '@/pages/NotFound';
+import {gamesApi} from '@/store/api';
+import gameReducer from '@/store/gameSlice';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const Store = configureStore({
     devTools: !isProduction,
-    reducer: {}
+    reducer: {
+        [gamesApi.reducerPath]: gamesApi.reducer,
+        game: gameReducer
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(gamesApi.middleware)
 })
 
-export type IRootState = ReturnType<typeof Store.getState>;
+export type RootState = ReturnType<typeof Store.getState>;
 export type AppDispatch = typeof Store.dispatch;
 
 const App = () => (
