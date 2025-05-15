@@ -1,0 +1,12 @@
+.swiper-pagination-bullet {
+    padding: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.70);
+    opacity: 10%;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 80% !important;
+    border: 2px solid rgba(255, 255, 255, 0.70);
+
+    transition: all 0.3s ease-in-out;
+}
