@@ -11,7 +11,7 @@ const Home = () => {
             <Header />
 
             <main className='flex-1'>
-                <div className='container px-4 py-6'>
+                <div className='container px-10 py-3'>
                     <FeaturedGames />
                     <GameLibrary />
                     <CategoryList />

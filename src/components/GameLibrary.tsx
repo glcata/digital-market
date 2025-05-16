@@ -213,7 +213,7 @@ const GameLibrary = () => {
             </div>
             <div className='flex items-center justify-end mb-4'>
                 {totalPages > 1 && (
-                    <div className='flex items-center justify-center gap-2 '>
+                    <div className='flex items-center justify-center gap-2'>
                         <Button
                             variant='outline'
                             size='icon'

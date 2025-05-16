@@ -28,7 +28,7 @@ const Header = () => {
     return (
         <header
             className='sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border'>
-            <div className='container flex h-16 items-center justify-between'>
+            <div className='container px-10 flex h-16 items-center justify-between'>
                 <div className='flex items-center gap-6'>
                     <Link to='/' className='flex items-center space-x-2'>
                         <Gamepad2 className='h-6 w-6 text-gaming-DEFAULT' />
@@ -50,9 +50,9 @@ const Header = () => {
                     )}
                 </div>
 
-                <div className='flex items-center space-x-4'>
+                <div className='flex items-center space-x-3'>
                     {!isMobile && (
-                        <div className='relative w-full max-w-sm mr-2'>
+                        <div className='relative w-full max-w-sm'>
                             <Search className='absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground' />
                             <Input
                                 type='search'
@@ -63,10 +63,9 @@ const Header = () => {
                             />
                         </div>
                     )}
-
                     <Button
                         variant='ghost'
-                        size='icon'
+                        size='sm'
                         className='relative'
                         onClick={() => setCartOpen(true)}
                     >
@@ -74,13 +73,12 @@ const Header = () => {
                         {cartItemCount > 0 && (
                             <span
                                 className='absolute -top-1 -right-1 h-4 w-4 rounded-full bg-gaming-DEFAULT flex items-center justify-center text-[10px] font-bold'>
-                {cartItemCount > 9 ? '9+' : cartItemCount}
-              </span>
+                                {cartItemCount > 9 ? '9+' : cartItemCount}
+                            </span>
                         )}
                     </Button>
-
-                    <Button variant='ghost' size='icon'>
-                        <User className='h-5 w-5' />
+                    <Button variant='ghost' size='sm'>
+                        <User className='h-4 w-4' />
                     </Button>
 
                     {isMobile && (
@@ -91,7 +89,7 @@ const Header = () => {
                                 </Button>
                             </SheetTrigger>
                             <SheetContent side='right' className='w-[80%] sm:w-[350px]'>
-                                <nav className='flex flex-col space-y-4 mt-8'>
+                                <nav className='flex flex-col items-center space-y-4 mt-8'>
                                     <div className='relative w-full mb-6'>
                                         <Search className='absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground' />
                                         <Input
