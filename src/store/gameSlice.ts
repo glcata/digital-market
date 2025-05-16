@@ -1,6 +1,8 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Game} from '@/lib/types';
 
+type SortOptions = 'relevance' | 'price-low' | 'price-high' | 'rating' | 'new';
+
 interface CartItem {
     game: Game;
     quantity: number;
@@ -13,7 +15,7 @@ interface GameState {
         priceRange: [number, number];
     };
     searchQuery: string;
-    sortBy: 'relevance' | 'price-low' | 'price-high' | 'rating' | 'new';
+    sortBy: SortOptions
     cart: CartItem[];
 }
 
@@ -35,7 +37,7 @@ export const gameSlice = createSlice({
         setSearchQuery: (state, action: PayloadAction<string>) => {
             state.searchQuery = action.payload;
         },
-        setSortBy: (state, action: PayloadAction<'relevance' | 'price-low' | 'price-high' | 'rating' | 'new'>) => {
+        setSortBy: (state, action: PayloadAction<SortOptions>) => {
             state.sortBy = action.payload;
         },
         togglePlatformFilter: (state, action: PayloadAction<string>) => {

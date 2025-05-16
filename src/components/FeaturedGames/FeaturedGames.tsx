@@ -8,7 +8,7 @@ import {Skeleton} from '@/components/ui/skeleton';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import '@/components/FeaturedGames.css';
+import './FeaturedGames.css';
 
 const FeaturedGames = () => {
     const {data: featuredGames, isLoading, error} = useGetFeaturedGamesQuery();
@@ -30,14 +30,14 @@ const FeaturedGames = () => {
     }
 
     return (
-        <div className='w-full relative rounded-xl overflow-hidden'>
+        <div className='w-full relative rounded-xl overflow-hidden select-none'>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 navigation
                 pagination={{clickable: true}}
-                autoplay={{delay: 5000}}
+                autoplay={{delay: 5000, disableOnInteraction: true}}
                 loop={true}
-                className='h-[500px] md:h-[550px] w-full'
+                className='h-[500px] md:h-[500px] w-full'
             >
                 {featuredGames.map((game) => (
                     <SwiperSlide key={game.id} className='relative w-full h-full'>
@@ -47,17 +47,20 @@ const FeaturedGames = () => {
                             className='w-full h-full object-cover'
                         />
                         <div className='absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent' />
-                        <div className='absolute bottom-0 left-0 w-full p-6 md:p-12'>
+                        <div className='absolute bottom-0 left-0 w-full p-6 p-12'>
                             <h2 className='text-3xl md:text-5xl font-bold text-white mb-2'>{game.title}</h2>
-                            <p className='text-lg text-white/80 mb-6 max-w-2xl line-clamp-2'>
+                            <p className='md:text-lg text-white/80 mb-6 max-w-2xl line-clamp-2'>
                                 {game.description}
                             </p>
                             <div className='flex flex-wrap gap-2 mb-6'>
-                                {game.genres.map((genre) => (
-                                    <span key={genre} className='px-3 py-1 bg-white/10 rounded-full text-white text-sm'>
-                    {genre}
-                  </span>
-                                ))}
+                                {game.genres.map(
+                                    (genre) => (
+                                        <span key={genre}
+                                              className='px-3 py-1 bg-white/10 rounded-full text-white text-sm'>
+                                                {genre}
+                                        </span>
+                                    )
+                                )}
                             </div>
                             <div className='flex flex-wrap gap-4'>
                                 <Button asChild className='bg-gaming-DEFAULT hover:bg-gaming-DEFAULT/90'>
