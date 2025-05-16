@@ -14,20 +14,17 @@ export const gamesApi = createApi({
     endpoints: (builder) => ({
         getGames: builder.query<Game[], void>({
             queryFn: () => {
-                return new Promise<{ data: Game[] }>((resolve) => {
-                    setTimeout(() => {
-                        resolve({data: mockGames});
-                    }, 500);
-                });
+                return new Promise<{ data: Game[] }>((resolve) =>
+                    setTimeout(() => resolve({data: mockGames}), 700));
             },
             providesTags: ['Games'],
         }),
         getGameById: builder.query<Game, number>({
             queryFn: (id) => {
                 const game = mockGames.find(game => game.id === id);
-                if (game) {
-                    return {data: game};
-                }
+
+                if (game) return {data: game};
+
                 return {
                     error: {
                         status: 404,
@@ -40,7 +37,9 @@ export const gamesApi = createApi({
         getFeaturedGames: builder.query<Game[], void>({
             queryFn: () => {
                 const featuredGames = mockGames.filter(game => game.featured);
-                return {data: featuredGames};
+
+                return new Promise<{ data: Game[] }>((resolve) =>
+                    setTimeout(() => resolve({data: featuredGames}), 700));
             },
             providesTags: ['Games'],
         }),

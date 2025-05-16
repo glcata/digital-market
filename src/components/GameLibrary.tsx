@@ -54,15 +54,14 @@ const GameLibrary = () => {
         setSortBy('relevance');
     };
 
-    const filteredGames = games?.filter((game: Game) => {
-        if (searchQuery && !game.title.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+    const filteredGames = games?.filter(
+        (game: Game) => {
+            if (searchQuery && !game.title.toLowerCase().includes(searchQuery.toLowerCase())) return false;
 
-        if (selectedPlatforms.length > 0 && !game.platforms.some(platform => selectedPlatforms.includes(platform))) return false;
+            if (selectedPlatforms.length > 0 && !game.platforms.some(platform => selectedPlatforms.includes(platform))) return false;
 
-        if (selectedGenres.length > 0 && !game.genres.some(genre => selectedGenres.includes(genre))) return false;
-
-        return true;
-    }) ?? [];
+            return !(selectedGenres.length > 0 && !game.genres.some(genre => selectedGenres.includes(genre)));
+        }) ?? [];
 
     const sortedGames = [...filteredGames].sort((a, b) => {
         switch (sortBy) {

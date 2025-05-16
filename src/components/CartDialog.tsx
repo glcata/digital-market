@@ -1,12 +1,12 @@
+import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {toast} from '@/hooks/use-toast';
 import {ArrowRight, CheckCircle2, ShoppingCart} from 'lucide-react';
 import {Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle,} from '@/components/ui/dialog';
-import {toast} from '@/components/ui/use-toast';
 import {Button} from '@/components/ui/button';
 import CartItem from '@/components/CartItem';
 import {clearCart} from '@/store/gameSlice';
 import {RootState} from '@/App';
-import {useEffect, useState} from 'react';
 
 interface CartDialogProps {
     open: boolean;

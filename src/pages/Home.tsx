@@ -1,9 +1,9 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import FeaturedGames from '@/components/FeaturedGames';
 import CategoryList from '@/components/CategoryList';
 import GameLibrary from '@/components/GameLibrary';
 import NewsLetterSection from '@/components/NewsletterSection';
+import {FeaturedGames} from '@/components/FeaturedGames';
 
 const Home = () => {
     return (

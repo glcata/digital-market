@@ -8,7 +8,7 @@ import {Skeleton} from '@/components/ui/skeleton';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import '@/components/FeaturedGames.css';
+import './FeaturedGames.css';
 
 const FeaturedGames = () => {
     const {data: featuredGames, isLoading, error} = useGetFeaturedGamesQuery();
@@ -37,7 +37,7 @@ const FeaturedGames = () => {
                 pagination={{clickable: true}}
                 autoplay={{delay: 5000}}
                 loop={true}
-                className='h-[500px] md:h-[550px] w-full'
+                className='h-[500px] md:h-[500px] w-full'
             >
                 {featuredGames.map((game) => (
                     <SwiperSlide key={game.id} className='relative w-full h-full'>
@@ -53,11 +53,14 @@ const FeaturedGames = () => {
                                 {game.description}
                             </p>
                             <div className='flex flex-wrap gap-2 mb-6'>
-                                {game.genres.map((genre) => (
-                                    <span key={genre} className='px-3 py-1 bg-white/10 rounded-full text-white text-sm'>
-                    {genre}
-                  </span>
-                                ))}
+                                {game.genres.map(
+                                    (genre) => (
+                                        <span key={genre}
+                                              className='px-3 py-1 bg-white/10 rounded-full text-white text-sm'>
+                                                {genre}
+                                        </span>
+                                    )
+                                )}
                             </div>
                             <div className='flex flex-wrap gap-4'>
                                 <Button asChild className='bg-gaming-DEFAULT hover:bg-gaming-DEFAULT/90'>

@@ -3,13 +3,13 @@ import {useDispatch} from 'react-redux';
 import {useGetGameByIdQuery} from '@/store/api';
 import {addToCart} from '@/store/gameSlice';
 import Header from '@/components/Header';
-import {toast} from '@/components/ui/use-toast';
 import GameHeader from '@/components/GameDetails/GameHeader';
 import GameMedia from '@/components/GameDetails/GameMedia';
 import GameInfo from '@/components/GameDetails/GameInfo';
 import GamePurchase from '@/components/GameDetails/GamePurchase';
 import GameSkeleton from '@/components/GameDetails/GameSkeleton';
 import GameError from '@/components/GameDetails/GameError';
+import {toast} from '@/hooks/use-toast';
 
 const GameDetails = () => {
     const {id} = useParams();

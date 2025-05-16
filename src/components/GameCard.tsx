@@ -23,7 +23,6 @@ const GameCard = ({game, className}: GameCardProps) => {
                     className='game-card-image'
                 />
                 <div className='game-card-gradient'></div>
-
                 <div className='absolute top-2 left-2 flex gap-1'>
                     {game.platforms.map((platform) => (
                         <Badge key={platform} variant='secondary' className='bg-black/60 hover:bg-black/60'>
@@ -32,7 +31,6 @@ const GameCard = ({game, className}: GameCardProps) => {
                         </Badge>
                     ))}
                 </div>
-
                 {
                     hasDiscount && (
                         <div className='absolute top-2 right-2'>
@@ -59,7 +57,6 @@ const GameCard = ({game, className}: GameCardProps) => {
                             <span className='text-xs px-2 py-0.5 bg-muted rounded-full'>+{game.genres.length - 2}</span>)
                     }
                 </div>
-
                 <div className='flex justify-between items-center'>
                     <div className='flex items-baseline gap-2'>
                         <span
