@@ -26,7 +26,7 @@ const CartItem = ({item}: CartItemProps) => {
 
     return (
         <div className='flex py-4 border-b border-border'>
-            <div className='h-16 w-12 flex-shrink-0 overflow-hidden rounded-md'>
+            <div className='h-16 w-20 flex-shrink-0 overflow-hidden rounded-md'>
                 <img
                     src={game.coverImage}
                     alt={game.title}

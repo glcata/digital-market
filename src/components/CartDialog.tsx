@@ -59,7 +59,7 @@ const CartDialog = ({open, onOpenChange}: CartDialogProps) => {
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className='max-w-md max-h-[85vh] overflow-hidden flex flex-col'>
+            <DialogContent className='max-w-2xl max-h-[85vh] overflow-hidden flex flex-col'>
                 <DialogHeader>
                     <DialogTitle className='flex items-center gap-2 text-xl'>
                         <ShoppingCart className='h-5 w-5' />
@@ -68,7 +68,7 @@ const CartDialog = ({open, onOpenChange}: CartDialogProps) => {
                 </DialogHeader>
 
                 {checkoutCompleted ? (
-                    <div className='flex flex-col items-center justify-center py-10 text-center'>
+                    <div className='flex flex-col items-center py-10 text-center'>
                         <CheckCircle2 className='h-16 w-16 text-gaming-DEFAULT mb-4' />
                         <h3 className='text-xl font-medium mb-2'>
                             {checkoutSuccess ? 'Order Completed!' : 'Processing your order...'}
@@ -106,16 +106,15 @@ const CartDialog = ({open, onOpenChange}: CartDialogProps) => {
                                 Shipping and taxes calculated at checkout
                             </p>
                         </div>
-
-                        <DialogFooter className='flex flex-col gap-2 mt-4'>
+                        <DialogFooter className='flex flex-col mt-4 sm:items-center !justify-between gap-4'>
                             <Button
+                                variant='outline'
                                 onClick={handleCheckout}
-                                className='w-full bg-gaming-DEFAULT hover:bg-gaming-DEFAULT/90'
+                                className='bg-gaming-DEFAULT hover:bg-gaming-DEFAULT/90'
                             >
                                 Checkout <ArrowRight className='ml-2 h-4 w-4' />
                             </Button>
-
-                            <div className='flex justify-between w-full'>
+                            <div className='flex justify-between gap-4'>
                                 <Button
                                     variant='outline'
                                     size='sm'
@@ -124,9 +123,8 @@ const CartDialog = ({open, onOpenChange}: CartDialogProps) => {
                                 >
                                     Clear Cart
                                 </Button>
-
                                 <DialogClose asChild>
-                                    <Button variant='ghost' size='sm' className='text-xs'>
+                                    <Button variant='secondary' size='sm' className='text-xs'>
                                         Continue Shopping
                                     </Button>
                                 </DialogClose>
@@ -134,7 +132,7 @@ const CartDialog = ({open, onOpenChange}: CartDialogProps) => {
                         </DialogFooter>
                     </>
                 ) : (
-                    <div className='flex flex-col items-center justify-center p-8 text-center'>
+                    <div className='flex flex-col flex-1 items-center justify-center p-8 text-center'>
                         <ShoppingCart className='h-12 w-12 text-muted-foreground mb-2' />
                         <h3 className='text-lg font-medium mb-1'>Your cart is empty</h3>
                         <p className='text-muted-foreground'>

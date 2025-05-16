@@ -50,7 +50,7 @@ const Header = () => {
                     )}
                 </div>
 
-                <div className='flex items-center space-x-3'>
+                <div className='flex items-center flex-shrink-0 space-x-3 ml-6'>
                     {!isMobile && (
                         <div className='relative w-full max-w-sm'>
                             <Search className='absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground' />
@@ -72,7 +72,7 @@ const Header = () => {
                         <ShoppingCart className='h-5 w-5' />
                         {cartItemCount > 0 && (
                             <span
-                                className='absolute -top-1 -right-1 h-4 w-4 rounded-full bg-gaming-DEFAULT flex items-center justify-center text-[10px] font-bold'>
+                                className='absolute -top-0.5 -right-0 h-4 w-4 rounded-full bg-gaming-DEFAULT flex items-center justify-center text-[10px] font-bold'>
                                 {cartItemCount > 9 ? '9+' : cartItemCount}
                             </span>
                         )}

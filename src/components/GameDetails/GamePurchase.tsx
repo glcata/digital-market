@@ -34,10 +34,11 @@ const GamePurchase = ({game, onAddToCart}: GamePurchaseProps) => {
             </div>
 
             <Button
-                className='w-full bg-gaming-DEFAULT hover:bg-gaming-DEFAULT/90 mb-3'
+                className='w-full bg-gaming-DEFAULT hover:bg-gaming-dark/70 mb-3'
+                variant='outline'
                 onClick={onAddToCart}
             >
-                <ShoppingCart className='h-4 w-4 mr-2' /> Add to Cart
+                <ShoppingCart className='h-4 w-4' />Add to Cart
             </Button>
 
             <Button variant='outline' className='w-full'>Buy Now</Button>
