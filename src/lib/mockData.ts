@@ -2,26 +2,6 @@ import {Category, Game} from '@/lib/types';
 
 export const mockGames: Game[] = [
     {
-        id: 1,
-        title: 'Cyber Nexus 2077',
-        description: 'An open-world action-adventure RPG set in a dystopian future where humanity and technology have merged in dangerous ways.',
-        price: 59.99,
-        releaseDate: '2023-11-15',
-        developer: 'Red Project Studios',
-        publisher: 'GameSoft Interactive',
-        genres: ['RPG', 'Action', 'Open World'],
-        tags: ['Cyberpunk', 'Futuristic', 'Story Rich'],
-        platforms: ['PC', 'PlayStation', 'Xbox'],
-        rating: 4.7,
-        coverImage: 'https://images.unsplash.com/photo-1605899435973-ca2d1a8861cf?q=80&w=2940&auto=format&fit=crop',
-        screenshots: [
-            'https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?q=80&w=2940&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2940&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1603481546238-487170308413?q=80&w=2940&auto=format&fit=crop'
-        ],
-        featured: true
-    },
-    {
         id: 2,
         title: 'Astral Legends',
         description: 'A space exploration game with elements of survival and base building. Navigate through procedurally generated galaxies.',
@@ -63,23 +43,24 @@ export const mockGames: Game[] = [
     },
     {
         id: 4,
-        title: 'Shadow Protocol',
-        description: 'A tactical stealth game where every decision matters. Lead a team of elite operatives on high-risk missions.',
-        price: 44.99,
+        title: 'Space Colony',
+        description: 'Build and manage your own space colony on distant planets. Research new technologies, manage resources, and ensure the survival of your colonists.',
+        price: 39.99,
         discountedPrice: 29.99,
-        releaseDate: '2023-08-05',
-        developer: 'Phantom Games',
-        publisher: 'BlackOps Interactive',
-        genres: ['Stealth', 'Tactical', 'Action'],
-        tags: ['Espionage', 'Team-based', 'Military'],
+        releaseDate: '2023-12-20',
+        developer: 'Colony Games',
+        publisher: 'Space Entertainment',
+        genres: ['Strategy', 'Simulation', 'Management'],
+        tags: ['Space', 'Colony', 'Building'],
         platforms: ['PC', 'PlayStation', 'Xbox'],
         rating: 4.6,
-        coverImage: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2940&auto=format&fit=crop',
+        coverImage: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop',
         screenshots: [
-            'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2940&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1551103782-8ab07afd45c1?q=80&w=2950&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2942&auto=format&fit=crop'
-        ]
+            'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop'
+        ],
+        featured: true
     },
     {
         id: 5,
@@ -292,11 +273,11 @@ export const mockGames: Game[] = [
         tags: ['Brain Training', 'Family', 'Relaxing'],
         platforms: ['PC', 'Mobile', 'Nintendo'],
         rating: 4.3,
-        coverImage: 'https://images.unsplash.com/photo-1637242365691-4008fb6d2893?q=80&w=2787&auto=format&fit=crop',
+        coverImage: 'https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=2940&auto=format&fit=crop',
         screenshots: [
-            'https://images.unsplash.com/photo-1637242365691-4008fb6d2893?q=80&w=2787&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1637242365691-4008fb6d2893?q=80&w=2787&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1637242365691-4008fb6d2893?q=80&w=2787&auto=format&fit=crop'
+            'https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=2940&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=2940&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=2940&auto=format&fit=crop'
         ]
     },
     {
@@ -474,27 +455,6 @@ export const mockGames: Game[] = [
             'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=2865&auto=format&fit=crop',
             'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=2865&auto=format&fit=crop'
         ]
-    },
-    {
-        id: 25,
-        title: 'Space Colony',
-        description: 'Build and manage your own space colony on distant planets. Research new technologies, manage resources, and ensure the survival of your colonists.',
-        price: 39.99,
-        discountedPrice: 29.99,
-        releaseDate: '2023-12-20',
-        developer: 'Colony Games',
-        publisher: 'Space Entertainment',
-        genres: ['Strategy', 'Simulation', 'Management'],
-        tags: ['Space', 'Colony', 'Building'],
-        platforms: ['PC', 'PlayStation', 'Xbox'],
-        rating: 4.6,
-        coverImage: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop',
-        screenshots: [
-            'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop'
-        ],
-        featured: true
     }
 ];
 
@@ -521,7 +481,7 @@ export const categories: Category[] = [
         id: 4,
         name: 'Strategy',
         slug: 'strategy',
-        image: 'https://images.unsplash.com/photo-1637242365691-4008fb6d2893?q=80&w=2787&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=2940&auto=format&fit=crop'
     },
     {
         id: 5,

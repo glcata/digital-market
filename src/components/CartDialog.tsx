@@ -39,6 +39,7 @@ const CartDialog = ({open, onOpenChange}: CartDialogProps) => {
 
             toast({
                 title: 'Order completed successfully!',
+                variant: 'destructive',
                 description: `Your purchase of $${subtotal.toFixed(2)} has been processed.`,
             });
 
