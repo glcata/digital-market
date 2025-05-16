@@ -26,13 +26,9 @@ const GameDetails = () => {
         }
     };
 
-    if (isLoading) {
-        return <GameSkeleton />;
-    }
+    if (isLoading) return <GameSkeleton />;
 
-    if (error || !game) {
-        return <GameError />;
-    }
+    if (error || !game) return <GameError />;
 
     return (
         <div className='min-h-screen bg-background'>
@@ -50,10 +46,7 @@ const GameDetails = () => {
                         <GameInfo game={game} />
                     </div>
 
-                    <GamePurchase
-                        game={game}
-                        onAddToCart={handleAddToCart}
-                    />
+                    <GamePurchase game={game} onAddToCart={handleAddToCart} />
                 </div>
             </div>
         </div>

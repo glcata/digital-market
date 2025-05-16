@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import FeaturedGames from '@/components/FeaturedGames';
 import CategoryList from '@/components/CategoryList';
 import GameLibrary from '@/components/GameLibrary';
+import NewsLetterSection from '@/components/NewsletterSection';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
                     <FeaturedGames />
                     <GameLibrary />
                     <CategoryList />
+                    <NewsLetterSection />
                 </div>
             </main>
 
