@@ -13,13 +13,17 @@ import GameCard from '@/components/GameCard';
 
 const platforms = ['PC', 'PlayStation', 'Xbox', 'Nintendo'];
 const genres = ['Action', 'Adventure', 'RPG', 'Strategy', 'Sports', 'Simulation', 'Racing'];
-const sortOptions = [
-    {label: 'Relevance', value: 'relevance'},
-    {label: 'Newest', value: 'new'},
-    {label: 'Highest Rating', value: 'rating'},
-    {label: 'Price: Low to High', value: 'price-low'},
-    {label: 'Price: High to Low', value: 'price-high'},
-];
+const sortOptions = {
+    byAudience: [
+        {label: 'Relevance', value: 'relevance'},
+        {label: 'Newest', value: 'new'},
+        {label: 'Highest Rating', value: 'rating'}
+    ],
+    byPrice: [
+        {label: 'Price: Low to High', value: 'price-low'},
+        {label: 'Price: High to Low', value: 'price-high'}
+    ]
+};
 
 const GAMES_PER_PAGE = 12;
 
@@ -95,7 +99,6 @@ const GameLibrary = () => {
         <div className='w-full mt-8'>
             <div className='flex flex-wrap items-center justify-between gap-4 mb-6'>
                 <h2 className='text-2xl font-bold'>Browse Games</h2>
-
                 <div className='flex items-center gap-4'>
                     <div className='relative max-w-sm'>
                         <Search className='absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground' />
@@ -107,7 +110,6 @@ const GameLibrary = () => {
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </div>
-
                     <Sheet>
                         <SheetTrigger asChild>
                             <Button variant='outline' className='flex items-center gap-2'>
@@ -175,13 +177,24 @@ const GameLibrary = () => {
                             </div>
                             <div className='py-4'>
                                 <h3 className='font-medium mb-3'>Sort By</h3>
-                                <Tabs defaultValue={sortBy} onValueChange={(value) => setSortBy(value)}>
-                                    <TabsList className='w-full flex flex-wrap'>
-                                        {sortOptions.map((option) => (
+                                <Tabs defaultValue={sortBy} onValueChange={(value: string) => setSortBy(value)}>
+                                    <TabsList className='w-full flex flex-nowrap mb-2'>
+                                        {sortOptions.byAudience.map((option) => (
                                             <TabsTrigger
                                                 key={option.value}
                                                 value={option.value}
-                                                className='flex-1 whitespace-nowrap'
+                                                className='flex-1'
+                                            >
+                                                {option.label}
+                                            </TabsTrigger>
+                                        ))}
+                                    </TabsList>
+                                    <TabsList className='w-full flex flex-nowrap'>
+                                        {sortOptions.byPrice.map((option) => (
+                                            <TabsTrigger
+                                                key={option.value}
+                                                value={option.value}
+                                                className='flex-1'
                                             >
                                                 {option.label}
                                             </TabsTrigger>
@@ -246,7 +259,6 @@ const GameLibrary = () => {
                     </div>
                 )}
             </div>
-
             {isLoading ? (
                 <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6`}>
                     {Array(8).fill(0).map((_, i) => (

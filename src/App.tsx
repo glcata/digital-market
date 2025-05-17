@@ -9,6 +9,8 @@ import NotFound from '@/pages/NotFound';
 import {gamesApi} from '@/store/api';
 import gameReducer from '@/store/gameSlice';
 import GameDetails from '@/pages/GameDetails';
+import Library from '@/pages/Library';
+import Categories from '@/pages/Categories';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const Store = configureStore({
@@ -32,6 +34,8 @@ const App = () => (
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<Home />} />
+                    <Route path='/categories' element={<Categories />} />
+                    <Route path='/library' element={<Library />} />
                     <Route path='/game/:id' element={<GameDetails />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>

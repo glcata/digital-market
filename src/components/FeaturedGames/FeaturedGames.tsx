@@ -47,7 +47,7 @@ const FeaturedGames = () => {
                             className='w-full h-full object-cover'
                         />
                         <div className='absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent' />
-                        <div className='absolute bottom-0 left-0 w-full p-6 p-12'>
+                        <div className='absolute bottom-0 left-0 w-full p-12'>
                             <h2 className='text-3xl md:text-5xl font-bold text-white mb-2'>{game.title}</h2>
                             <p className='md:text-lg text-white/80 mb-6 max-w-2xl line-clamp-2'>
                                 {game.description}
