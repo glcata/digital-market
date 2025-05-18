@@ -20,10 +20,10 @@ const GameCard = ({game, className}: GameCardProps) => {
                 <img
                     src={game.coverImage}
                     alt={game.title}
-                    className='game-card-image'
+                    className={`w-full object-cover ${!className?.includes('flex') ? 'aspect-[16/9]' : 'aspect-square md:aspect-[16/9]'}`}
                 />
                 <div className='game-card-gradient'></div>
-                <div className='absolute top-2 left-2 flex gap-1'>
+                <div className='absolute top-2 left-2 sm:flex gap-1 hidden'>
                     {game.platforms.map((platform) => (
                         <Badge key={platform} variant='secondary' className='bg-black/60 hover:bg-black/60'>
                             {platform === 'PlayStation' ? 'PS5' :
@@ -38,12 +38,10 @@ const GameCard = ({game, className}: GameCardProps) => {
                         </div>)
                 }
             </div>
-
-            <div className='p-4'>
+            <div className='p-4 min-w-60'>
                 <h3 className='font-bold text-lg line-clamp-1 group-hover:text-gaming-DEFAULT transition-colors'>
                     {game.title}
                 </h3>
-
                 <div className='flex flex-wrap gap-1 mt-1.5 mb-2.5'>
                     {
                         game.genres.slice(0, 2).map(

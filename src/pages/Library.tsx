@@ -1,9 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CategoryList from '@/components/CategoryList';
 import GameLibrary from '@/components/GameLibrary';
-import NewsLetterSection from '@/components/NewsletterSection';
-import {FeaturedGames} from '@/components/FeaturedGames';
 
 const Home = () => {
     return (
@@ -11,13 +8,9 @@ const Home = () => {
             <Header />
             <main className='flex-1'>
                 <div className='container px-10 py-3'>
-                    <FeaturedGames />
                     <GameLibrary />
-                    <CategoryList />
-                    <NewsLetterSection />
                 </div>
             </main>
-
             <Footer />
         </div>
     );

@@ -32,9 +32,8 @@ const Header = () => {
                 <div className='flex items-center gap-6'>
                     <Link to='/' className='flex items-center space-x-2'>
                         <Gamepad2 className='h-6 w-6 text-gaming-DEFAULT' />
-                        <span className='text-xl font-bold'>CrowdByte</span>
+                        <span className='text-xl font-bold hover:text-primary transition'>CrowdByte</span>
                     </Link>
-
                     {!isMobile && (
                         <nav className='hidden md:flex items-center space-x-6'>
                             {navLinks.map((link) => (
@@ -49,7 +48,6 @@ const Header = () => {
                         </nav>
                     )}
                 </div>
-
                 <div className='flex items-center flex-shrink-0 space-x-3 ml-6'>
                     {!isMobile && (
                         <div className='relative w-full max-w-sm'>
@@ -80,7 +78,6 @@ const Header = () => {
                     <Button variant='ghost' size='sm'>
                         <User className='h-4 w-4' />
                     </Button>
-
                     {isMobile && (
                         <Sheet>
                             <SheetTrigger asChild>
@@ -113,7 +110,6 @@ const Header = () => {
                             </SheetContent>
                         </Sheet>
                     )}
-
                     <CartDialog
                         open={cartOpen}
                         onOpenChange={setCartOpen}

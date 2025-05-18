@@ -13,23 +13,29 @@ import GameCard from '@/components/GameCard';
 
 const platforms = ['PC', 'PlayStation', 'Xbox', 'Nintendo'];
 const genres = ['Action', 'Adventure', 'RPG', 'Strategy', 'Sports', 'Simulation', 'Racing'];
-const sortOptions = [
-    {label: 'Relevance', value: 'relevance'},
-    {label: 'Newest', value: 'new'},
-    {label: 'Highest Rating', value: 'rating'},
-    {label: 'Price: Low to High', value: 'price-low'},
-    {label: 'Price: High to Low', value: 'price-high'},
-];
+const sortOptions = {
+    byAudience: [
+        {label: 'Relevance', value: 'relevance'},
+        {label: 'Newest', value: 'new'},
+        {label: 'Highest Rating', value: 'rating'}
+    ],
+    byPrice: [
+        {label: 'Price: Low to High', value: 'price-low'},
+        {label: 'Price: High to Low', value: 'price-high'}
+    ]
+};
 
 const GAMES_PER_PAGE = 12;
+const INITIAL_SORT_BY = 'relevance';
+const INITIAL_VIEW_MODE = 'grid';
 
 const GameLibrary = () => {
     const {data: games, isLoading} = useGetGamesQuery();
     const [searchQuery, setSearchQuery] = useState('');
-    const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+    const [viewMode, setViewMode] = useState<'grid' | 'list'>(INITIAL_VIEW_MODE);
     const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
     const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
-    const [sortBy, setSortBy] = useState('relevance');
+    const [sortBy, setSortBy] = useState(INITIAL_SORT_BY);
     const [currentPage, setCurrentPage] = useState(1);
 
     const togglePlatform = (platform: string) => {
@@ -48,10 +54,11 @@ const GameLibrary = () => {
         }
     };
 
-    const resetFilters = () => {
+    const resetFilters = (andSearch: boolean = false) => {
+        if (andSearch) setSearchQuery('');
         setSelectedPlatforms([]);
         setSelectedGenres([]);
-        setSortBy('relevance');
+        setSortBy(INITIAL_SORT_BY);
     };
 
     const filteredGames = games?.filter(
@@ -91,11 +98,48 @@ const GameLibrary = () => {
         setCurrentPage(1);
     }, [searchQuery, selectedPlatforms, selectedGenres, sortBy]);
 
+    const pagination = () => (
+        <div className='flex items-center justify-end'>
+            {totalPages > 1 && (
+                <div className='flex items-center justify-center gap-2'>
+                    <Button
+                        variant='outline'
+                        size='icon'
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                    >
+                        <ChevronLeft className='h-4 w-4' />
+                    </Button>
+                    {
+                        Array.from({length: totalPages}, (_, i) => i + 1).map((page) => (
+                            <Button
+                                key={page}
+                                variant={currentPage === page ? 'default' : 'outline'}
+                                size='icon'
+                                onClick={() => handlePageChange(page)}
+                                className='w-8 h-8'
+                            >
+                                {page}
+                            </Button>
+                        ))
+                    }
+                    <Button
+                        variant='outline'
+                        size='icon'
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                    >
+                        <ChevronRight className='h-4 w-4' />
+                    </Button>
+                </div>
+            )}
+        </div>
+    );
+
     return (
         <div className='w-full mt-8'>
             <div className='flex flex-wrap items-center justify-between gap-4 mb-6'>
                 <h2 className='text-2xl font-bold'>Browse Games</h2>
-
                 <div className='flex items-center gap-4'>
                     <div className='relative max-w-sm'>
                         <Search className='absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground' />
@@ -107,7 +151,6 @@ const GameLibrary = () => {
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </div>
-
                     <Sheet>
                         <SheetTrigger asChild>
                             <Button variant='outline' className='flex items-center gap-2'>
@@ -129,7 +172,7 @@ const GameLibrary = () => {
                             </SheetHeader>
                             <div className='flex justify-between items-center py-4 border-b'>
                                 <h3 className='font-semibold'>Filters</h3>
-                                <Button variant='ghost' size='sm' onClick={resetFilters} className='h-8'>
+                                <Button variant='ghost' size='sm' onClick={() => resetFilters()} className='h-8'>
                                     <X className='h-3.5 w-3.5 mr-1' /> Reset
                                 </Button>
                             </div>
@@ -175,13 +218,24 @@ const GameLibrary = () => {
                             </div>
                             <div className='py-4'>
                                 <h3 className='font-medium mb-3'>Sort By</h3>
-                                <Tabs defaultValue={sortBy} onValueChange={(value) => setSortBy(value)}>
-                                    <TabsList className='w-full flex flex-wrap'>
-                                        {sortOptions.map((option) => (
+                                <Tabs defaultValue={sortBy} onValueChange={(value: string) => setSortBy(value)}>
+                                    <TabsList className='w-full flex flex-nowrap mb-2'>
+                                        {sortOptions.byAudience.map((option) => (
                                             <TabsTrigger
                                                 key={option.value}
                                                 value={option.value}
-                                                className='flex-1 whitespace-nowrap'
+                                                className='flex-1'
+                                            >
+                                                {option.label}
+                                            </TabsTrigger>
+                                        ))}
+                                    </TabsList>
+                                    <TabsList className='w-full flex flex-nowrap'>
+                                        {sortOptions.byPrice.map((option) => (
+                                            <TabsTrigger
+                                                key={option.value}
+                                                value={option.value}
+                                                className='flex-1'
                                             >
                                                 {option.label}
                                             </TabsTrigger>
@@ -211,42 +265,7 @@ const GameLibrary = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex items-center justify-end mb-4'>
-                {totalPages > 1 && (
-                    <div className='flex items-center justify-center gap-2'>
-                        <Button
-                            variant='outline'
-                            size='icon'
-                            onClick={() => handlePageChange(currentPage - 1)}
-                            disabled={currentPage === 1}
-                        >
-                            <ChevronLeft className='h-4 w-4' />
-                        </Button>
-                        {
-                            Array.from({length: totalPages}, (_, i) => i + 1).map((page) => (
-                                <Button
-                                    key={page}
-                                    variant={currentPage === page ? 'default' : 'outline'}
-                                    size='icon'
-                                    onClick={() => handlePageChange(page)}
-                                    className='w-8 h-8'
-                                >
-                                    {page}
-                                </Button>
-                            ))
-                        }
-                        <Button
-                            variant='outline'
-                            size='icon'
-                            onClick={() => handlePageChange(currentPage + 1)}
-                            disabled={currentPage === totalPages}
-                        >
-                            <ChevronRight className='h-4 w-4' />
-                        </Button>
-                    </div>
-                )}
-            </div>
-
+            <div className='mb-4'>{pagination()}</div>
             {isLoading ? (
                 <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6`}>
                     {Array(8).fill(0).map((_, i) => (
@@ -277,7 +296,7 @@ const GameLibrary = () => {
                             />
                         ))}
                     </div>
-
+                    <div className='mt-4'>{pagination()}</div>
                     <div className='text-center text-sm text-muted-foreground mt-4'>
                         Showing {startIndex + 1}-{Math.min(endIndex, sortedGames.length)} of {sortedGames.length} games
                     </div>
@@ -288,8 +307,8 @@ const GameLibrary = () => {
                     <p className='text-muted-foreground mb-4'>
                         Try changing your search terms or filters
                     </p>
-                    <Button variant='outline' onClick={resetFilters}>
-                        Reset Filters
+                    <Button variant='outline' onClick={() => resetFilters(true)}>
+                        Reset Filters & Search
                     </Button>
                 </div>
             )}

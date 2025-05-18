@@ -48,6 +48,7 @@
 @layer base {
     * {
         @apply border-border;
+        @apply scroll-smooth;
     }
 
     body {
@@ -55,7 +56,7 @@
     }
 
     .game-card {
-        @apply bg-card rounded-lg opacity-70 from-black/50 overflow-hidden transition-all duration-200 hover:opacity-100 hover:from-black/10 hover:-translate-x-1 hover:translate-y-1 hover:shadow-lg hover:shadow-red-500/15 relative;
+        @apply bg-card rounded-lg opacity-70 from-black/50 overflow-hidden transition-all duration-300 hover:opacity-100 hover:from-black/10 hover:-translate-x-1 hover:translate-y-1 hover:shadow-lg hover:shadow-red-500/25 relative;
     }
 
     .game-card-image {
