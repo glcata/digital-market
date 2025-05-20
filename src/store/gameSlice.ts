@@ -25,14 +25,14 @@ const initialState: GameState = {
         genres: [],
         priceRange: [0, 100],
     },
-    searchQuery: '',
+    searchQuery: 'resstg',
     sortBy: 'relevance',
     cart: [],
 };
 
 export const gameSlice = createSlice({
     name: 'game',
-    initialState,
+    initialState: initialState,
     reducers: {
         setSearchQuery: (state, action: PayloadAction<string>) => {
             state.searchQuery = action.payload;

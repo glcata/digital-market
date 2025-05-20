@@ -6,7 +6,7 @@ import {Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTi
 import {Button} from '@/components/ui/button';
 import CartItem from '@/components/CartItem';
 import {clearCart} from '@/store/gameSlice';
-import {RootState} from '@/App';
+import {IRootState} from '@/App';
 
 interface CartDialogProps {
     open: boolean;
@@ -15,7 +15,7 @@ interface CartDialogProps {
 
 const CartDialog = ({open, onOpenChange}: CartDialogProps) => {
     const dispatch = useDispatch();
-    const cart = useSelector((state: RootState) => state.game.cart);
+    const cart = useSelector((state: IRootState) => state.game.cart);
     const [checkoutCompleted, setCheckoutCompleted] = useState(false);
     const [checkoutSuccess, setCheckoutSuccess] = useState(false);
 

@@ -10,6 +10,9 @@ import {Checkbox} from '@/components/ui/checkbox';
 import {Label} from '@/components/ui/label';
 import {Skeleton} from '@/components/ui/skeleton';
 import GameCard from '@/components/GameCard';
+import {useDispatch, useSelector} from 'react-redux';
+import {setSearchQuery} from '@/store/gameSlice';
+import {IRootState} from '@/App';
 
 const platforms = ['PC', 'PlayStation', 'Xbox', 'Nintendo'];
 const genres = ['Action', 'Adventure', 'RPG', 'Strategy', 'Sports', 'Simulation', 'Racing'];
@@ -31,12 +34,13 @@ const INITIAL_VIEW_MODE = 'grid';
 
 const GameLibrary = () => {
     const {data: games, isLoading} = useGetGamesQuery();
-    const [searchQuery, setSearchQuery] = useState('');
     const [viewMode, setViewMode] = useState<'grid' | 'list'>(INITIAL_VIEW_MODE);
     const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
     const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
     const [sortBy, setSortBy] = useState(INITIAL_SORT_BY);
     const [currentPage, setCurrentPage] = useState(1);
+    const searchQuery = useSelector<IRootState, string>((state) => state.game.searchQuery);
+    const dispatch = useDispatch();
 
     const togglePlatform = (platform: string) => {
         if (selectedPlatforms.includes(platform)) {
@@ -55,7 +59,7 @@ const GameLibrary = () => {
     };
 
     const resetFilters = (andSearch: boolean = false) => {
-        if (andSearch) setSearchQuery('');
+        if (andSearch) handleSearchChange('');
         setSelectedPlatforms([]);
         setSelectedGenres([]);
         setSortBy(INITIAL_SORT_BY);
@@ -93,9 +97,13 @@ const GameLibrary = () => {
     const currentGames = sortedGames.slice(startIndex, endIndex);
 
     const handlePageChange = (newPage: number) => setCurrentPage(newPage);
+    const handleSearchChange = (searchValue: string) => dispatch(setSearchQuery(searchValue));
 
     useEffect(() => {
         setCurrentPage(1);
+
+        console.log('store', searchQuery);
+
     }, [searchQuery, selectedPlatforms, selectedGenres, sortBy]);
 
     const pagination = () => (
@@ -148,7 +156,7 @@ const GameLibrary = () => {
                             placeholder='Search games...'
                             className='pl-8'
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => handleSearchChange(e.target.value)}
                         />
                     </div>
                     <Sheet>
