@@ -23,8 +23,7 @@ const Store = configureStore({
         getDefaultMiddleware().concat(gamesApi.middleware)
 })
 
-export type RootState = ReturnType<typeof Store.getState>;
-export type AppDispatch = typeof Store.dispatch;
+export type IRootState = ReturnType<typeof Store.getState>;
 
 const App = () => (
     <Provider store={Store}>

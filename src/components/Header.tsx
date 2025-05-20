@@ -1,21 +1,22 @@
 import {useState} from 'react';
 import {Link} from 'react-router';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {Gamepad2, Menu, Search, ShoppingCart, User} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Sheet, SheetContent, SheetTrigger} from '@/components/ui/sheet';
 import {useMediaQuery} from '@/hooks/use-media-query';
-import {RootState} from '@/App';
 import CartDialog from '@/components/CartDialog';
+import {IRootState} from '@/App';
+import {setSearchQuery} from '@/store/gameSlice';
 
 const Header = () => {
-    const [searchQuery, setSearchQuery] = useState('');
     const [cartOpen, setCartOpen] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
-
-    const cart = useSelector((state: RootState) => state.game.cart);
+    const searchQuery = useSelector<IRootState, string>(state => state.game.searchQuery);
+    const cart = useSelector((state: IRootState) => state.game.cart);
     const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const dispatch = useDispatch();
 
     const navLinks = [
         {name: 'Store', path: '/'},
@@ -24,6 +25,8 @@ const Header = () => {
         {name: 'Community', path: '/community'},
         {name: 'Support', path: '/support'},
     ];
+
+    const handleSearchChange = (searchValue: string) => dispatch(setSearchQuery(searchValue));
 
     return (
         <header
@@ -57,7 +60,7 @@ const Header = () => {
                                 placeholder='Search games...'
                                 className='pl-8 bg-muted/50 border-0'
                                 value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
+                                onChange={(e) => handleSearchChange(e.target.value)}
                             />
                         </div>
                     )}
@@ -94,7 +97,7 @@ const Header = () => {
                                             placeholder='Search games...'
                                             className='pl-8 bg-muted/50 border-0'
                                             value={searchQuery}
-                                            onChange={(e) => setSearchQuery(e.target.value)}
+                                            onChange={(e) => handleSearchChange(e.target.value)}
                                         />
                                     </div>
                                     {navLinks.map((link) => (
