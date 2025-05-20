@@ -25,7 +25,7 @@ const initialState: GameState = {
         genres: [],
         priceRange: [0, 100],
     },
-    searchQuery: 'resstg',
+    searchQuery: '',
     sortBy: 'relevance',
     cart: [],
 };
