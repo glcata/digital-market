@@ -1,46 +1,18 @@
-import {Toaster} from '@/components/ui/toaster';
-import {Toaster as Sonner} from '@/components/ui/sonner';
-import {TooltipProvider} from '@/components/ui/tooltip';
-import {BrowserRouter, Route, Routes} from 'react-router';
-import {Provider} from 'react-redux';
-import {configureStore} from '@reduxjs/toolkit';
-import Home from '@/pages/Home';
-import NotFound from '@/pages/NotFound';
-import {gamesApi} from '@/store/api';
-import gameReducer from '@/store/gameSlice';
-import GameDetails from '@/pages/GameDetails';
-import Library from '@/pages/Library';
-import Categories from '@/pages/Categories';
-
-const isProduction = process.env.NODE_ENV === 'production';
-const Store = configureStore({
-    devTools: !isProduction,
-    reducer: {
-        [gamesApi.reducerPath]: gamesApi.reducer,
-        game: gameReducer
-    },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(gamesApi.middleware)
-})
-
-export type IRootState = ReturnType<typeof Store.getState>;
+import Header from '@/common/components/Header';
+import Footer from '@/common/components/Footer';
+import '@/app/app.css';
+import {Outlet} from 'react-router';
 
 const App = () => (
-    <Provider store={Store}>
-        <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/categories' element={<Categories />} />
-                    <Route path='/library' element={<Library />} />
-                    <Route path='/game/:id' element={<GameDetails />} />
-                    <Route path='*' element={<NotFound />} />
-                </Routes>
-            </BrowserRouter>
-        </TooltipProvider>
-    </Provider>
+    <div className='min-h-screen flex flex-col bg-background'>
+        <Header />
+        <main className='flex-1'>
+            <div className='container px-10 py-3'>
+                <Outlet />
+            </div>
+        </main>
+        <Footer />
+    </div>
 );
 
 export default App;

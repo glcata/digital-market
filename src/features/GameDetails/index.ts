@@ -1,0 +1,1 @@
+export {default as GameDetails} from './ui/GameDetails';
