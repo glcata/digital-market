@@ -1,10 +1,8 @@
-import {useEffect, useState} from 'react';
-import {useGetGamesQuery} from '@/common/store/api';
+import {useState} from 'react';
 import {Button} from '@/common/components/@radix-ui/button';
 import {Input} from '@/common/components/@radix-ui/input';
 import {Tabs, TabsList, TabsTrigger} from '@/common/components/@radix-ui/tabs';
-import {Game} from '@/common/lib/types';
-import {ChevronLeft, ChevronRight, LayoutGrid, LayoutList, Search, SlidersHorizontal, X} from 'lucide-react';
+import {LayoutGrid, LayoutList, Search, SlidersHorizontal, X} from 'lucide-react';
 import {
     Sheet,
     SheetContent,
@@ -17,13 +15,13 @@ import {Checkbox} from '@/common/components/@radix-ui/checkbox';
 import {Label} from '@/common/components/@radix-ui/label';
 import {Skeleton} from '@/common/components/@radix-ui/skeleton';
 import GameCard from '@/common/components/GameCard';
-import {useDispatch, useSelector} from 'react-redux';
-import {setSearchQuery} from '@/common/store/gameSlice';
-import {IRootState} from '@/app/ReduxStoreConfig';
+import {SortOptions} from '@/common/store/gameSlice';
+import {useGames} from '@/common/hooks/useGames';
+import GamePagination from '@/common/components/GamePagination';
 
-const platforms = ['PC', 'PlayStation', 'Xbox', 'Nintendo'];
-const genres = ['Action', 'Adventure', 'RPG', 'Strategy', 'Sports', 'Simulation', 'Racing'];
-const sortOptions = {
+const PLATFORMS = ['PC', 'PlayStation', 'Xbox', 'Nintendo'];
+const GENRES = ['Action', 'Adventure', 'RPG', 'Strategy', 'Sports', 'Simulation', 'Racing'];
+const SORT_OPTIONS = {
     byAudience: [
         {label: 'Relevance', value: 'relevance'},
         {label: 'Newest', value: 'new'},
@@ -35,119 +33,25 @@ const sortOptions = {
     ]
 };
 
-const GAMES_PER_PAGE = 12;
-const INITIAL_SORT_BY = 'relevance';
 const INITIAL_VIEW_MODE = 'grid';
 
 const Library = () => {
-    const {data: games, isLoading} = useGetGamesQuery();
     const [viewMode, setViewMode] = useState<'grid' | 'list'>(INITIAL_VIEW_MODE);
-    const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
-    const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
-    const [sortBy, setSortBy] = useState(INITIAL_SORT_BY);
-    const [currentPage, setCurrentPage] = useState(1);
-    const searchQuery = useSelector<IRootState, string>((state) => state.game.searchQuery);
-    const dispatch = useDispatch();
-
-    const togglePlatform = (platform: string) => {
-        if (selectedPlatforms.includes(platform)) {
-            setSelectedPlatforms(selectedPlatforms.filter(p => p !== platform));
-        } else {
-            setSelectedPlatforms([...selectedPlatforms, platform]);
-        }
-    };
-
-    const toggleGenre = (genre: string) => {
-        if (selectedGenres.includes(genre)) {
-            setSelectedGenres(selectedGenres.filter(g => g !== genre));
-        } else {
-            setSelectedGenres([...selectedGenres, genre]);
-        }
-    };
-
-    const resetFilters = (andSearch: boolean = false) => {
-        if (andSearch) handleSearchChange('');
-        setSelectedPlatforms([]);
-        setSelectedGenres([]);
-        setSortBy(INITIAL_SORT_BY);
-    };
-
-    const filteredGames = games?.filter(
-        (game: Game) => {
-            if (searchQuery && !game.title.toLowerCase().includes(searchQuery.toLowerCase())) return false;
-
-            if (selectedPlatforms.length > 0 && !game.platforms.some(platform => selectedPlatforms.includes(platform))) return false;
-
-            return !(selectedGenres.length > 0 && !game.genres.some(genre => selectedGenres.includes(genre)));
-        }) ?? [];
-
-    const sortedGames = [...filteredGames].sort((a, b) => {
-        switch (sortBy) {
-            case 'rating':
-                return b.rating - a.rating;
-            case 'price-low':
-                return (a.discountedPrice ?? a.price) - (b.discountedPrice ?? b.price);
-            case 'price-high':
-                return (b.discountedPrice ?? b.price) - (a.discountedPrice ?? a.price);
-            case 'new':
-                return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
-            default:
-                return 0;
-        }
-    });
+    const {
+        gamesPaged,
+        isLoading,
+        searchQuery,
+        selectedPlatforms,
+        selectedGenres,
+        sortBy,
+        togglePlatform,
+        toggleGenre,
+        toggleSortBy,
+        handleResetFilters,
+        handleSearchChange
+    } = useGames();
 
     const hasActiveFilters = selectedPlatforms.length > 0 || selectedGenres.length > 0 || sortBy !== 'relevance';
-
-    const totalPages = Math.ceil(sortedGames.length / GAMES_PER_PAGE);
-    const startIndex = (currentPage - 1) * GAMES_PER_PAGE;
-    const endIndex = startIndex + GAMES_PER_PAGE;
-    const currentGames = sortedGames.slice(startIndex, endIndex);
-
-    const handlePageChange = (newPage: number) => setCurrentPage(newPage);
-    const handleSearchChange = (searchValue: string) => dispatch(setSearchQuery(searchValue));
-
-    useEffect(() => {
-        setCurrentPage(1);
-
-    }, [searchQuery, selectedPlatforms, selectedGenres, sortBy]);
-
-    const pagination = () => (
-        <div className='flex items-center justify-end'>
-            {totalPages > 1 && (
-                <div className='flex items-center justify-center gap-2'>
-                    <Button
-                        variant='outline'
-                        size='icon'
-                        onClick={() => handlePageChange(currentPage - 1)}
-                        disabled={currentPage === 1}
-                    >
-                        <ChevronLeft className='h-4 w-4' />
-                    </Button>
-                    {
-                        Array.from({length: totalPages}, (_, i) => i + 1).map((page) => (
-                            <Button
-                                key={page}
-                                variant={currentPage === page ? 'default' : 'outline'}
-                                size='icon'
-                                onClick={() => handlePageChange(page)}
-                                className='w-8 h-8'
-                            >
-                                {page}
-                            </Button>
-                        ))
-                    }
-                    <Button
-                        variant='outline'
-                        size='icon'
-                        onClick={() => handlePageChange(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                    >
-                        <ChevronRight className='h-4 w-4' />
-                    </Button>
-                </div>
-            )}
-        </div>
-    );
 
     return (
         <div className='w-full mt-8'>
@@ -185,14 +89,14 @@ const Library = () => {
                             </SheetHeader>
                             <div className='flex justify-between items-center py-4 border-b'>
                                 <h3 className='font-semibold'>Filters</h3>
-                                <Button variant='ghost' size='sm' onClick={() => resetFilters()} className='h-8'>
+                                <Button variant='ghost' size='sm' onClick={() => handleResetFilters()} className='h-8'>
                                     <X className='h-3.5 w-3.5 mr-1' /> Reset
                                 </Button>
                             </div>
                             <div className='py-4 border-b'>
                                 <h3 className='font-medium mb-3'>Platforms</h3>
                                 <div className='space-y-2'>
-                                    {platforms.map((platform) => (
+                                    {PLATFORMS.map((platform) => (
                                         <div key={platform} className='flex items-center space-x-2'>
                                             <Checkbox
                                                 id={`platform-${platform}`}
@@ -212,7 +116,7 @@ const Library = () => {
                             <div className='py-4 border-b'>
                                 <h3 className='font-medium mb-3'>Genres</h3>
                                 <div className='space-y-2'>
-                                    {genres.map((genre) => (
+                                    {GENRES.map((genre) => (
                                         <div key={genre} className='flex items-center space-x-2'>
                                             <Checkbox
                                                 id={`genre-${genre}`}
@@ -231,9 +135,10 @@ const Library = () => {
                             </div>
                             <div className='py-4'>
                                 <h3 className='font-medium mb-3'>Sort By</h3>
-                                <Tabs defaultValue={sortBy} onValueChange={(value: string) => setSortBy(value)}>
+                                <Tabs defaultValue={sortBy}
+                                      onValueChange={(value: string) => toggleSortBy(value as SortOptions)}>
                                     <TabsList className='w-full flex flex-nowrap mb-2'>
-                                        {sortOptions.byAudience.map((option) => (
+                                        {SORT_OPTIONS.byAudience.map((option) => (
                                             <TabsTrigger
                                                 key={option.value}
                                                 value={option.value}
@@ -244,7 +149,7 @@ const Library = () => {
                                         ))}
                                     </TabsList>
                                     <TabsList className='w-full flex flex-nowrap'>
-                                        {sortOptions.byPrice.map((option) => (
+                                        {SORT_OPTIONS.byPrice.map((option) => (
                                             <TabsTrigger
                                                 key={option.value}
                                                 value={option.value}
@@ -278,7 +183,7 @@ const Library = () => {
                     </div>
                 </div>
             </div>
-            <div className='mb-4'>{pagination()}</div>
+            <div className='mb-4'><GamePagination /></div>
             {isLoading ? (
                 <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6`}>
                     {Array(8).fill(0).map((_, i) => (
@@ -295,13 +200,13 @@ const Library = () => {
                         </div>
                     ))}
                 </div>
-            ) : sortedGames.length > 0 ? (
+            ) : gamesPaged.length > 0 ? (
                 <>
                     <div className={viewMode === 'grid'
                         ? `grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5`
                         : `flex flex-col gap-4`
                     }>
-                        {currentGames.map((game) => (
+                        {gamesPaged.map((game) => (
                             <GameCard
                                 key={game.id}
                                 game={game}
@@ -309,10 +214,7 @@ const Library = () => {
                             />
                         ))}
                     </div>
-                    <div className='mt-4'>{pagination()}</div>
-                    <div className='text-center text-sm text-muted-foreground mt-4'>
-                        Showing {startIndex + 1}-{Math.min(endIndex, sortedGames.length)} of {sortedGames.length} games
-                    </div>
+                    <div className='mt-4'><GamePagination hasActiveDetails /></div>
                 </>
             ) : (
                 <div className='flex flex-col items-center justify-center py-12 text-center'>
@@ -320,7 +222,7 @@ const Library = () => {
                     <p className='text-muted-foreground mb-4'>
                         Try changing your search terms or filters
                     </p>
-                    <Button variant='outline' onClick={() => resetFilters(true)}>
+                    <Button variant='outline' onClick={() => handleResetFilters(true)}>
                         Reset Filters & Search
                     </Button>
                 </div>
