@@ -2,6 +2,7 @@ import {useGetGamesQuery} from '@/common/store/api';
 import {useDispatch, useSelector} from 'react-redux';
 import {IRootState} from '@/app/ReduxStoreConfig';
 import {
+    Pagination,
     resetFilters,
     setSearchQuery,
     setSelectedGenres,
@@ -18,6 +19,7 @@ export const useGames = () => {
     const selectedPlatforms = useSelector<IRootState, string[]>((state) => state.game.selectedFilters.platforms);
     const selectedGenres = useSelector<IRootState, string[]>(state => state.game.selectedFilters.genres);
     const sortBy = useSelector<IRootState, SortOptions>((state) => state.game.sortBy);
+    const pagination = useSelector<IRootState, Pagination>((state) => state.game.pagination);
     const dispatch = useDispatch();
 
     const togglePlatform = (platform: string) =>
@@ -27,7 +29,7 @@ export const useGames = () => {
         dispatch(setSelectedGenres(genre));
 
     const toggleSortBy = (value: SortOptions) =>
-        dispatch(setSortBy(value))
+        dispatch(setSortBy(value));
 
     const handleResetFilters = (andSearch: boolean = false) => {
         dispatch(resetFilters(andSearch));
@@ -60,9 +62,12 @@ export const useGames = () => {
         }
     });
 
+    const currentGames = sortedGames?.slice(pagination.startIndex, pagination.endIndex);
+
     return {
         isLoading,
         games: sortedGames,
+        gamesPaged: currentGames,
         searchQuery,
         selectedPlatforms,
         selectedGenres,
@@ -71,6 +76,6 @@ export const useGames = () => {
         toggleGenre,
         toggleSortBy,
         handleResetFilters,
-        handleSearchChange
+        handleSearchChange,
     }
 }

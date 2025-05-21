@@ -1,8 +1,8 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {Button} from '@/common/components/@radix-ui/button';
 import {Input} from '@/common/components/@radix-ui/input';
 import {Tabs, TabsList, TabsTrigger} from '@/common/components/@radix-ui/tabs';
-import {ChevronLeft, ChevronRight, LayoutGrid, LayoutList, Search, SlidersHorizontal, X} from 'lucide-react';
+import {LayoutGrid, LayoutList, Search, SlidersHorizontal, X} from 'lucide-react';
 import {
     Sheet,
     SheetContent,
@@ -17,6 +17,7 @@ import {Skeleton} from '@/common/components/@radix-ui/skeleton';
 import GameCard from '@/common/components/GameCard';
 import {SortOptions} from '@/common/store/gameSlice';
 import {useGames} from '@/common/hooks/useGames';
+import GamePagination from '@/common/components/GamePagination';
 
 const PLATFORMS = ['PC', 'PlayStation', 'Xbox', 'Nintendo'];
 const GENRES = ['Action', 'Adventure', 'RPG', 'Strategy', 'Sports', 'Simulation', 'Racing'];
@@ -32,14 +33,12 @@ const SORT_OPTIONS = {
     ]
 };
 
-const GAMES_PER_PAGE = 12;
 const INITIAL_VIEW_MODE = 'grid';
 
 const Library = () => {
     const [viewMode, setViewMode] = useState<'grid' | 'list'>(INITIAL_VIEW_MODE);
-    const [currentPage, setCurrentPage] = useState(1);
     const {
-        games,
+        gamesPaged,
         isLoading,
         searchQuery,
         selectedPlatforms,
@@ -52,57 +51,7 @@ const Library = () => {
         handleSearchChange
     } = useGames();
 
-    useEffect(() => {
-        setCurrentPage(1);
-
-    }, [searchQuery, selectedPlatforms, selectedGenres, sortBy]);
-
     const hasActiveFilters = selectedPlatforms.length > 0 || selectedGenres.length > 0 || sortBy !== 'relevance';
-
-    const totalPages = Math.ceil(games.length / GAMES_PER_PAGE);
-    const startIndex = (currentPage - 1) * GAMES_PER_PAGE;
-    const endIndex = startIndex + GAMES_PER_PAGE;
-    const currentGames = games.slice(startIndex, endIndex);
-
-    const handlePageChange = (newPage: number) => setCurrentPage(newPage);
-
-    const pagination = () => (
-        <div className='flex items-center justify-end'>
-            {totalPages > 1 && (
-                <div className='flex items-center justify-center gap-2'>
-                    <Button
-                        variant='outline'
-                        size='icon'
-                        onClick={() => handlePageChange(currentPage - 1)}
-                        disabled={currentPage === 1}
-                    >
-                        <ChevronLeft className='h-4 w-4' />
-                    </Button>
-                    {
-                        Array.from({length: totalPages}, (_, i) => i + 1).map((page) => (
-                            <Button
-                                key={page}
-                                variant={currentPage === page ? 'default' : 'outline'}
-                                size='icon'
-                                onClick={() => handlePageChange(page)}
-                                className='w-8 h-8'
-                            >
-                                {page}
-                            </Button>
-                        ))
-                    }
-                    <Button
-                        variant='outline'
-                        size='icon'
-                        onClick={() => handlePageChange(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                    >
-                        <ChevronRight className='h-4 w-4' />
-                    </Button>
-                </div>
-            )}
-        </div>
-    );
 
     return (
         <div className='w-full mt-8'>
@@ -234,7 +183,7 @@ const Library = () => {
                     </div>
                 </div>
             </div>
-            <div className='mb-4'>{pagination()}</div>
+            <div className='mb-4'><GamePagination /></div>
             {isLoading ? (
                 <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6`}>
                     {Array(8).fill(0).map((_, i) => (
@@ -251,13 +200,13 @@ const Library = () => {
                         </div>
                     ))}
                 </div>
-            ) : games.length > 0 ? (
+            ) : gamesPaged.length > 0 ? (
                 <>
                     <div className={viewMode === 'grid'
                         ? `grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5`
                         : `flex flex-col gap-4`
                     }>
-                        {currentGames.map((game) => (
+                        {gamesPaged.map((game) => (
                             <GameCard
                                 key={game.id}
                                 game={game}
@@ -265,10 +214,7 @@ const Library = () => {
                             />
                         ))}
                     </div>
-                    <div className='mt-4'>{pagination()}</div>
-                    <div className='text-center text-sm text-muted-foreground mt-4'>
-                        Showing {startIndex + 1}-{Math.min(endIndex, games.length)} of {games.length} games
-                    </div>
+                    <div className='mt-4'><GamePagination hasActiveDetails /></div>
                 </>
             ) : (
                 <div className='flex flex-col items-center justify-center py-12 text-center'>
