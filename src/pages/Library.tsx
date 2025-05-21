@@ -1,9 +1,7 @@
 import {useEffect, useState} from 'react';
-import {useGetGamesQuery} from '@/common/store/api';
 import {Button} from '@/common/components/@radix-ui/button';
 import {Input} from '@/common/components/@radix-ui/input';
 import {Tabs, TabsList, TabsTrigger} from '@/common/components/@radix-ui/tabs';
-import {Game} from '@/common/lib/types';
 import {ChevronLeft, ChevronRight, LayoutGrid, LayoutList, Search, SlidersHorizontal, X} from 'lucide-react';
 import {
     Sheet,
@@ -17,16 +15,8 @@ import {Checkbox} from '@/common/components/@radix-ui/checkbox';
 import {Label} from '@/common/components/@radix-ui/label';
 import {Skeleton} from '@/common/components/@radix-ui/skeleton';
 import GameCard from '@/common/components/GameCard';
-import {useDispatch, useSelector} from 'react-redux';
-import {
-    resetFilters,
-    setSearchQuery,
-    setSelectedGenres,
-    setSelectedPlatforms,
-    setSortBy,
-    SortOptions
-} from '@/common/store/gameSlice';
-import {IRootState} from '@/app/ReduxStoreConfig';
+import {SortOptions} from '@/common/store/gameSlice';
+import {useGames} from '@/common/hooks/useGames';
 
 const PLATFORMS = ['PC', 'PlayStation', 'Xbox', 'Nintendo'];
 const GENRES = ['Action', 'Adventure', 'RPG', 'Strategy', 'Sports', 'Simulation', 'Racing'];
@@ -46,71 +36,35 @@ const GAMES_PER_PAGE = 12;
 const INITIAL_VIEW_MODE = 'grid';
 
 const Library = () => {
-    const {data: games, isLoading} = useGetGamesQuery();
     const [viewMode, setViewMode] = useState<'grid' | 'list'>(INITIAL_VIEW_MODE);
     const [currentPage, setCurrentPage] = useState(1);
-    const searchQuery = useSelector<IRootState, string>((state) => state.game.searchQuery);
-    const selectedPlatforms = useSelector<IRootState, string[]>((state) => state.game.selectedFilters.platforms);
-    const selectedGenres = useSelector<IRootState, string[]>(state => state.game.selectedFilters.genres);
-    const sortBy = useSelector<IRootState, SortOptions>((state) => state.game.sortBy);
-    const dispatch = useDispatch();
+    const {
+        games,
+        isLoading,
+        searchQuery,
+        selectedPlatforms,
+        selectedGenres,
+        sortBy,
+        togglePlatform,
+        toggleGenre,
+        toggleSortBy,
+        handleResetFilters,
+        handleSearchChange
+    } = useGames();
 
     useEffect(() => {
         setCurrentPage(1);
 
-        console.log('selectedGenres', selectedGenres);
-
     }, [searchQuery, selectedPlatforms, selectedGenres, sortBy]);
-
-    const togglePlatform = (platform: string) => {
-        dispatch(setSelectedPlatforms(platform));
-    };
-
-    const toggleGenre = (genre: string) => {
-        dispatch(setSelectedGenres(genre));
-    };
-
-    const toggleSortBy = (value: SortOptions) => {
-        dispatch(setSortBy(value));
-    }
-
-    const handleResetFilters = (andSearch: boolean = false) => {
-        dispatch(resetFilters(andSearch));
-    };
-
-    const filteredGames = games?.filter(
-        (game: Game) => {
-            if (searchQuery && !game.title.toLowerCase().includes(searchQuery.toLowerCase())) return false;
-
-            if (selectedPlatforms.length > 0 && !game.platforms.some(platform => selectedPlatforms.includes(platform))) return false;
-
-            return !(selectedGenres.length > 0 && !game.genres.some(genre => selectedGenres.includes(genre)));
-        }) ?? [];
-
-    const sortedGames = [...filteredGames].sort((a, b) => {
-        switch (sortBy) {
-            case 'rating':
-                return b.rating - a.rating;
-            case 'price-low':
-                return (a.discountedPrice ?? a.price) - (b.discountedPrice ?? b.price);
-            case 'price-high':
-                return (b.discountedPrice ?? b.price) - (a.discountedPrice ?? a.price);
-            case 'new':
-                return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
-            default:
-                return 0;
-        }
-    });
 
     const hasActiveFilters = selectedPlatforms.length > 0 || selectedGenres.length > 0 || sortBy !== 'relevance';
 
-    const totalPages = Math.ceil(sortedGames.length / GAMES_PER_PAGE);
+    const totalPages = Math.ceil(games.length / GAMES_PER_PAGE);
     const startIndex = (currentPage - 1) * GAMES_PER_PAGE;
     const endIndex = startIndex + GAMES_PER_PAGE;
-    const currentGames = sortedGames.slice(startIndex, endIndex);
+    const currentGames = games.slice(startIndex, endIndex);
 
     const handlePageChange = (newPage: number) => setCurrentPage(newPage);
-    const handleSearchChange = (searchValue: string) => dispatch(setSearchQuery(searchValue));
 
     const pagination = () => (
         <div className='flex items-center justify-end'>
@@ -297,7 +251,7 @@ const Library = () => {
                         </div>
                     ))}
                 </div>
-            ) : sortedGames.length > 0 ? (
+            ) : games.length > 0 ? (
                 <>
                     <div className={viewMode === 'grid'
                         ? `grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5`
@@ -313,7 +267,7 @@ const Library = () => {
                     </div>
                     <div className='mt-4'>{pagination()}</div>
                     <div className='text-center text-sm text-muted-foreground mt-4'>
-                        Showing {startIndex + 1}-{Math.min(endIndex, sortedGames.length)} of {sortedGames.length} games
+                        Showing {startIndex + 1}-{Math.min(endIndex, games.length)} of {games.length} games
                     </div>
                 </>
             ) : (
