@@ -18,12 +18,19 @@ import {Label} from '@/common/components/@radix-ui/label';
 import {Skeleton} from '@/common/components/@radix-ui/skeleton';
 import GameCard from '@/common/components/GameCard';
 import {useDispatch, useSelector} from 'react-redux';
-import {setSearchQuery} from '@/common/store/gameSlice';
+import {
+    resetFilters,
+    setSearchQuery,
+    setSelectedGenres,
+    setSelectedPlatforms,
+    setSortBy,
+    SortOptions
+} from '@/common/store/gameSlice';
 import {IRootState} from '@/app/ReduxStoreConfig';
 
-const platforms = ['PC', 'PlayStation', 'Xbox', 'Nintendo'];
-const genres = ['Action', 'Adventure', 'RPG', 'Strategy', 'Sports', 'Simulation', 'Racing'];
-const sortOptions = {
+const PLATFORMS = ['PC', 'PlayStation', 'Xbox', 'Nintendo'];
+const GENRES = ['Action', 'Adventure', 'RPG', 'Strategy', 'Sports', 'Simulation', 'Racing'];
+const SORT_OPTIONS = {
     byAudience: [
         {label: 'Relevance', value: 'relevance'},
         {label: 'Newest', value: 'new'},
@@ -36,40 +43,39 @@ const sortOptions = {
 };
 
 const GAMES_PER_PAGE = 12;
-const INITIAL_SORT_BY = 'relevance';
 const INITIAL_VIEW_MODE = 'grid';
 
 const Library = () => {
     const {data: games, isLoading} = useGetGamesQuery();
     const [viewMode, setViewMode] = useState<'grid' | 'list'>(INITIAL_VIEW_MODE);
-    const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
-    const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
-    const [sortBy, setSortBy] = useState(INITIAL_SORT_BY);
     const [currentPage, setCurrentPage] = useState(1);
     const searchQuery = useSelector<IRootState, string>((state) => state.game.searchQuery);
+    const selectedPlatforms = useSelector<IRootState, string[]>((state) => state.game.selectedFilters.platforms);
+    const selectedGenres = useSelector<IRootState, string[]>(state => state.game.selectedFilters.genres);
+    const sortBy = useSelector<IRootState, SortOptions>((state) => state.game.sortBy);
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        setCurrentPage(1);
+
+        console.log('selectedGenres', selectedGenres);
+
+    }, [searchQuery, selectedPlatforms, selectedGenres, sortBy]);
+
     const togglePlatform = (platform: string) => {
-        if (selectedPlatforms.includes(platform)) {
-            setSelectedPlatforms(selectedPlatforms.filter(p => p !== platform));
-        } else {
-            setSelectedPlatforms([...selectedPlatforms, platform]);
-        }
+        dispatch(setSelectedPlatforms(platform));
     };
 
     const toggleGenre = (genre: string) => {
-        if (selectedGenres.includes(genre)) {
-            setSelectedGenres(selectedGenres.filter(g => g !== genre));
-        } else {
-            setSelectedGenres([...selectedGenres, genre]);
-        }
+        dispatch(setSelectedGenres(genre));
     };
 
-    const resetFilters = (andSearch: boolean = false) => {
-        if (andSearch) handleSearchChange('');
-        setSelectedPlatforms([]);
-        setSelectedGenres([]);
-        setSortBy(INITIAL_SORT_BY);
+    const toggleSortBy = (value: SortOptions) => {
+        dispatch(setSortBy(value));
+    }
+
+    const handleResetFilters = (andSearch: boolean = false) => {
+        dispatch(resetFilters(andSearch));
     };
 
     const filteredGames = games?.filter(
@@ -105,11 +111,6 @@ const Library = () => {
 
     const handlePageChange = (newPage: number) => setCurrentPage(newPage);
     const handleSearchChange = (searchValue: string) => dispatch(setSearchQuery(searchValue));
-
-    useEffect(() => {
-        setCurrentPage(1);
-
-    }, [searchQuery, selectedPlatforms, selectedGenres, sortBy]);
 
     const pagination = () => (
         <div className='flex items-center justify-end'>
@@ -185,14 +186,14 @@ const Library = () => {
                             </SheetHeader>
                             <div className='flex justify-between items-center py-4 border-b'>
                                 <h3 className='font-semibold'>Filters</h3>
-                                <Button variant='ghost' size='sm' onClick={() => resetFilters()} className='h-8'>
+                                <Button variant='ghost' size='sm' onClick={() => handleResetFilters()} className='h-8'>
                                     <X className='h-3.5 w-3.5 mr-1' /> Reset
                                 </Button>
                             </div>
                             <div className='py-4 border-b'>
                                 <h3 className='font-medium mb-3'>Platforms</h3>
                                 <div className='space-y-2'>
-                                    {platforms.map((platform) => (
+                                    {PLATFORMS.map((platform) => (
                                         <div key={platform} className='flex items-center space-x-2'>
                                             <Checkbox
                                                 id={`platform-${platform}`}
@@ -212,7 +213,7 @@ const Library = () => {
                             <div className='py-4 border-b'>
                                 <h3 className='font-medium mb-3'>Genres</h3>
                                 <div className='space-y-2'>
-                                    {genres.map((genre) => (
+                                    {GENRES.map((genre) => (
                                         <div key={genre} className='flex items-center space-x-2'>
                                             <Checkbox
                                                 id={`genre-${genre}`}
@@ -231,9 +232,10 @@ const Library = () => {
                             </div>
                             <div className='py-4'>
                                 <h3 className='font-medium mb-3'>Sort By</h3>
-                                <Tabs defaultValue={sortBy} onValueChange={(value: string) => setSortBy(value)}>
+                                <Tabs defaultValue={sortBy}
+                                      onValueChange={(value: string) => toggleSortBy(value as SortOptions)}>
                                     <TabsList className='w-full flex flex-nowrap mb-2'>
-                                        {sortOptions.byAudience.map((option) => (
+                                        {SORT_OPTIONS.byAudience.map((option) => (
                                             <TabsTrigger
                                                 key={option.value}
                                                 value={option.value}
@@ -244,7 +246,7 @@ const Library = () => {
                                         ))}
                                     </TabsList>
                                     <TabsList className='w-full flex flex-nowrap'>
-                                        {sortOptions.byPrice.map((option) => (
+                                        {SORT_OPTIONS.byPrice.map((option) => (
                                             <TabsTrigger
                                                 key={option.value}
                                                 value={option.value}
@@ -320,7 +322,7 @@ const Library = () => {
                     <p className='text-muted-foreground mb-4'>
                         Try changing your search terms or filters
                     </p>
-                    <Button variant='outline' onClick={() => resetFilters(true)}>
+                    <Button variant='outline' onClick={() => handleResetFilters(true)}>
                         Reset Filters & Search
                     </Button>
                 </div>

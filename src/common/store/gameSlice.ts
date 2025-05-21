@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Game} from '@/common/lib/types';
 
-type SortOptions = 'relevance' | 'price-low' | 'price-high' | 'rating' | 'new';
+export type SortOptions = 'relevance' | 'price-low' | 'price-high' | 'rating' | 'new';
 
 interface CartItem {
     game: Game;
@@ -40,7 +40,7 @@ export const gameSlice = createSlice({
         setSortBy: (state, action: PayloadAction<SortOptions>) => {
             state.sortBy = action.payload;
         },
-        togglePlatformFilter: (state, action: PayloadAction<string>) => {
+        setSelectedPlatforms: (state, action: PayloadAction<string>) => {
             const platform = action.payload;
             if (state.selectedFilters.platforms.includes(platform)) {
                 state.selectedFilters.platforms = state.selectedFilters.platforms.filter(p => p !== platform);
@@ -48,7 +48,7 @@ export const gameSlice = createSlice({
                 state.selectedFilters.platforms.push(platform);
             }
         },
-        toggleGenreFilter: (state, action: PayloadAction<string>) => {
+        setSelectedGenres: (state, action: PayloadAction<string>) => {
             const genre = action.payload;
             if (state.selectedFilters.genres.includes(genre)) {
                 state.selectedFilters.genres = state.selectedFilters.genres.filter(g => g !== genre);
@@ -59,11 +59,17 @@ export const gameSlice = createSlice({
         setPriceRange: (state, action: PayloadAction<[number, number]>) => {
             state.selectedFilters.priceRange = action.payload;
         },
-        resetFilters: (state) => {
+        resetFilters: (state, action: PayloadAction<boolean>) => {
+            if (action.payload) state.searchQuery = initialState.searchQuery;
             state.selectedFilters = initialState.selectedFilters;
             state.sortBy = initialState.sortBy;
         },
-
+        resetPlatforms: (state) => {
+            state.selectedFilters.platforms = initialState.selectedFilters.platforms;
+        },
+        resetGenres: (state) => {
+            state.selectedFilters.genres = initialState.selectedFilters.genres;
+        },
         addToCart: (state, action: PayloadAction<Game>) => {
             const gameToAdd = action.payload;
             const existingItemIndex = state.cart.findIndex(item => item.game.id === gameToAdd.id);
@@ -101,10 +107,12 @@ export const gameSlice = createSlice({
 export const {
     setSearchQuery,
     setSortBy,
-    togglePlatformFilter,
-    toggleGenreFilter,
+    setSelectedPlatforms,
+    setSelectedGenres,
     setPriceRange,
     resetFilters,
+    resetPlatforms,
+    resetGenres,
     addToCart,
     removeFromCart,
     updateQuantity,
