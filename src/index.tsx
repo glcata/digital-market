@@ -9,6 +9,7 @@ import NotFound from '@/common/components/NotFound';
 import {RoutesConfig} from '@/app/RoutesConfig';
 import Store from '@/app/ReduxStoreConfig';
 import App from '@/App';
+import RouteChangeTracker from '@/app/RouteChangeTracker';
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
                 <Toaster />
                 <Sonner />
                 <BrowserRouter>
+                    <RouteChangeTracker />
                     <Routes>
                         <Route
                             path='/'
