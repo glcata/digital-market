@@ -6,6 +6,9 @@ This project represents a demonstrative implementation of a modern UI design for
 
 The application is available live on Vercel: [Digital Market Demo](https://digital-market-eta.vercel.app/)
 
+<img src="assets/digital-market-macbook-frame.png" alt="Macbook Pro Frame" width="32%" />
+<img src="assets/digital-market-iphone-frame.png" alt="iPhone 16 Pro Max Frame" width="9%" />
+
 ## 🛠️ Technologies Used
 
 - **Frontend Framework:** React
