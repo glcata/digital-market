@@ -1,5 +1,4 @@
 import {useParams} from 'react-router';
-import {useDispatch} from 'react-redux';
 import {useGetGameByIdQuery} from '@/common/store/api';
 import {addToCart} from '@/common/store/gameSlice';
 import {toast} from '@/common/hooks/useToast';
@@ -12,10 +11,11 @@ import {
     GamePurchase,
     GameSkeleton
 } from '@/features/GameDetails/components';
+import {useAppDispatch} from '@/common/hooks/useRedux';
 
 const GameDetails = () => {
     const {id} = useParams();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const {data: game, isLoading, error} = useGetGameByIdQuery(Number(id));
 
     const handleAddToCart = () => {

@@ -16,7 +16,7 @@ export interface Game {
     featured?: boolean;
 }
 
-export type Platform = 'PC' | 'PlayStation' | 'Xbox' | 'Nintendo' | 'Mobile';
+export type Platform = 'PC' | 'PlayStation' | 'Xbox' | 'Nintendo' | 'Mobile' | 'Linux' | 'Mac';
 
 export interface Category {
     id: number;

@@ -19,7 +19,7 @@ import {SortOptions} from '@/common/store/gameSlice';
 import {useGames} from '@/common/hooks/useGames';
 import GamePagination from '@/common/components/GamePagination';
 
-const PLATFORMS = ['PC', 'PlayStation', 'Xbox', 'Nintendo'];
+const PLATFORMS = ['PC', 'PlayStation', 'Xbox', 'Nintendo', 'Linux', 'Mac'];
 const GENRES = ['Action', 'Adventure', 'RPG', 'Strategy', 'Sports', 'Simulation', 'Racing'];
 const SORT_OPTIONS = {
     byAudience: [

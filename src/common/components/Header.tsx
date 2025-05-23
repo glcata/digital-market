@@ -1,22 +1,21 @@
 import {useState} from 'react';
 import {Link} from 'react-router';
-import {useDispatch, useSelector} from 'react-redux';
 import {Gamepad2, Menu, Search, ShoppingCart, User} from 'lucide-react';
 import {Button} from '@/common/components/@radix-ui/button';
 import {Input} from '@/common/components/@radix-ui/input';
 import {Sheet, SheetContent, SheetTrigger} from '@/common/components/@radix-ui/sheet';
 import {useMediaQuery} from '@/common/hooks/useMediaQuery';
 import {setSearchQuery} from '@/common/store/gameSlice';
-import {IRootState} from '@/app/ReduxStoreConfig';
 import {CartDialog} from '@/common/components/Cart';
+import {useAppDispatch, useAppSelector} from '@/common/hooks/useRedux';
 
 const Header = () => {
     const [cartOpen, setCartOpen] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
-    const searchQuery = useSelector<IRootState, string>(state => state.game.searchQuery);
-    const cart = useSelector((state: IRootState) => state.game.cart);
+    const searchQuery = useAppSelector<string>(state => state.game.searchQuery);
+    const cart = useAppSelector(state => state.game.cart);
     const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const navLinks = [
         {name: 'Store', path: '/store'},

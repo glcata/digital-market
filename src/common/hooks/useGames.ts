@@ -1,6 +1,4 @@
 import {useGetGamesQuery} from '@/common/store/api';
-import {useDispatch, useSelector} from 'react-redux';
-import {IRootState} from '@/app/ReduxStoreConfig';
 import {
     Pagination,
     resetFilters,
@@ -11,16 +9,17 @@ import {
     SortOptions
 } from '@/common/store/gameSlice';
 import {Game} from '@/common/lib/types';
+import {useAppDispatch, useAppSelector} from '@/common/hooks/useRedux';
 
 export const useGames = () => {
     const {data: games, isLoading} = useGetGamesQuery();
 
-    const searchQuery = useSelector<IRootState, string>((state) => state.game.searchQuery);
-    const selectedPlatforms = useSelector<IRootState, string[]>((state) => state.game.selectedFilters.platforms);
-    const selectedGenres = useSelector<IRootState, string[]>(state => state.game.selectedFilters.genres);
-    const sortBy = useSelector<IRootState, SortOptions>((state) => state.game.sortBy);
-    const pagination = useSelector<IRootState, Pagination>((state) => state.game.pagination);
-    const dispatch = useDispatch();
+    const searchQuery = useAppSelector<string>(state => state.game.searchQuery);
+    const selectedPlatforms = useAppSelector<string[]>(state => state.game.selectedFilters.platforms);
+    const selectedGenres = useAppSelector<string[]>(state => state.game.selectedFilters.genres);
+    const sortBy = useAppSelector<SortOptions>(state => state.game.sortBy);
+    const pagination = useAppSelector<Pagination>(state => state.game.pagination);
+    const dispatch = useAppDispatch();
 
     const togglePlatform = (platform: string) =>
         dispatch(setSelectedPlatforms(platform));

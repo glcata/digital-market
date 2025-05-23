@@ -1,5 +1,4 @@
 import {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
 import {toast} from '@/common/hooks/useToast';
 import {ArrowRight, CheckCircle2, ShoppingCart} from 'lucide-react';
 import {
@@ -12,8 +11,8 @@ import {
 } from '@/common/components/@radix-ui/dialog';
 import {Button} from '@/common/components/@radix-ui/button';
 import CartItem from '@/common/components/Cart/CartItem';
-import {clearCart} from '@/common/store/gameSlice';
-import {IRootState} from '@/app/ReduxStoreConfig';
+import {Cart, clearCart} from '@/common/store/gameSlice';
+import {useAppDispatch, useAppSelector} from '@/common/hooks/useRedux';
 
 interface CartDialogProps {
     open: boolean;
@@ -21,8 +20,8 @@ interface CartDialogProps {
 }
 
 const CartDialog = ({open, onOpenChange}: CartDialogProps) => {
-    const dispatch = useDispatch();
-    const cart = useSelector((state: IRootState) => state.game.cart);
+    const dispatch = useAppDispatch();
+    const cart = useAppSelector<Cart[]>(state => state.game.cart);
     const [checkoutCompleted, setCheckoutCompleted] = useState(false);
     const [checkoutSuccess, setCheckoutSuccess] = useState(false);
 

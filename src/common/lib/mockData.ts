@@ -2,7 +2,7 @@ import {Category, Game} from '@/common/lib/types';
 
 export const mockGames: Game[] = [
     {
-        id: 2,
+        id: 1,
         title: 'Astral Legends',
         description: 'A space exploration game with elements of survival and base building. Navigate through procedurally generated galaxies.',
         price: 49.99,
@@ -19,11 +19,10 @@ export const mockGames: Game[] = [
             'https://images.unsplash.com/photo-1581276879432-15e50529f34b?q=80&w=2940&auto=format&fit=crop',
             'https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=2940&auto=format&fit=crop',
             'https://images.unsplash.com/photo-1537420327992-d6e192287183?q=80&w=2942&auto=format&fit=crop'
-        ],
-        featured: true
+        ]
     },
     {
-        id: 3,
+        id: 2,
         title: 'Medieval Dynasty',
         description: 'Build your legacy in a medieval world through farming, crafting, and expanding your influence across the kingdom.',
         price: 39.99,
@@ -42,7 +41,7 @@ export const mockGames: Game[] = [
         ]
     },
     {
-        id: 4,
+        id: 3,
         title: 'Space Colony',
         description: 'Build and manage your own space colony on distant planets. Research new technologies, manage resources, and ensure the survival of your colonists.',
         price: 39.99,
@@ -63,7 +62,7 @@ export const mockGames: Game[] = [
         featured: true
     },
     {
-        id: 5,
+        id: 4,
         title: 'Racing Evolution GT',
         description: 'Experience the ultimate racing simulation with photorealistic graphics and precise physics.',
         price: 54.99,
@@ -83,7 +82,7 @@ export const mockGames: Game[] = [
         featured: true
     },
     {
-        id: 6,
+        id: 5,
         title: 'Monster Hunters',
         description: 'Team up with friends to hunt massive creatures in a vibrant fantasy world filled with dangers and rewards.',
         price: 49.99,
@@ -102,7 +101,7 @@ export const mockGames: Game[] = [
         ]
     },
     {
-        id: 7,
+        id: 6,
         title: 'Pixel Pioneers',
         description: 'A retro-style adventure game where you build and manage your own pixel art world. Create, explore, and survive in this charming sandbox experience.',
         price: 24.99,
@@ -123,7 +122,7 @@ export const mockGames: Game[] = [
         featured: true
     },
     {
-        id: 8,
+        id: 7,
         title: 'Quantum Chess',
         description: 'A revolutionary take on chess where quantum mechanics meets classic strategy. Experience mind-bending moves and parallel universe gameplay.',
         price: 29.99,
@@ -142,7 +141,7 @@ export const mockGames: Game[] = [
         ]
     },
     {
-        id: 9,
+        id: 8,
         title: 'Ocean Explorer',
         description: 'Dive into the depths of the ocean in this stunning underwater exploration game. Discover ancient ruins, mysterious creatures, and hidden treasures.',
         price: 34.99,
@@ -163,26 +162,7 @@ export const mockGames: Game[] = [
         featured: true
     },
     {
-        id: 10,
-        title: 'Neon Nights',
-        description: 'A cyberpunk-themed rhythm game where you navigate through neon-lit streets, matching beats and battling rival DJs in a futuristic city.',
-        price: 39.99,
-        releaseDate: '2023-09-05',
-        developer: 'Beat Masters',
-        publisher: 'Rhythm Games Co',
-        genres: ['Rhythm', 'Music', 'Action'],
-        tags: ['Cyberpunk', 'Music', 'Arcade'],
-        platforms: ['PC', 'PlayStation', 'Xbox', 'Nintendo'],
-        rating: 4.5,
-        coverImage: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2940&auto=format&fit=crop',
-        screenshots: [
-            'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2940&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1551103782-8ab07afd45c1?q=80&w=2950&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2942&auto=format&fit=crop'
-        ]
-    },
-    {
-        id: 11,
+        id: 9,
         title: 'Farm & Friends',
         description: 'A cozy farming simulation game where you build your dream farm, raise animals, and connect with friends in a peaceful countryside setting.',
         price: 29.99,
@@ -201,28 +181,7 @@ export const mockGames: Game[] = [
         ]
     },
     {
-        id: 12,
-        title: 'Space Engineers 2',
-        description: 'Design, build, and pilot your own spacecraft in this advanced space engineering simulation. Explore the galaxy and survive in the harsh environment of space.',
-        price: 44.99,
-        discountedPrice: 34.99,
-        releaseDate: '2023-12-15',
-        developer: 'Cosmic Engineering',
-        publisher: 'Space Games Inc',
-        genres: ['Simulation', 'Engineering', 'Space'],
-        tags: ['Building', 'Physics', 'Exploration'],
-        platforms: ['PC', 'Xbox'],
-        rating: 4.6,
-        coverImage: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2811&auto=format&fit=crop',
-        screenshots: [
-            'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2811&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2811&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2811&auto=format&fit=crop'
-        ],
-        featured: true
-    },
-    {
-        id: 13,
+        id: 10,
         title: 'Mystic Realms',
         description: 'An enchanting fantasy RPG where you master ancient magic, forge alliances with mythical creatures, and battle dark forces threatening the realm.',
         price: 49.99,
@@ -233,16 +192,16 @@ export const mockGames: Game[] = [
         tags: ['Magic', 'Open World', 'Story Rich'],
         platforms: ['PC', 'PlayStation', 'Xbox'],
         rating: 4.7,
-        coverImage: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2884&auto=format&fit=crop',
+        coverImage: 'https://www.allkeyshop.com/blog/wp-content/uploads/Path-of-Exile-2-Exilecon.png',
         screenshots: [
-            'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2884&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2884&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2884&auto=format&fit=crop'
-        ],
-        featured: true
+            'https://www.pcgamesn.com/wp-content/sites/pcgamesn/2024/11/poe2-warrior-class-580x334.jpg',
+            'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2694490/ss_8bf65d74e31309d415ef667161e06b20194cbc10.1920x1080.jpg',
+            'https://i.imgur.com/bvJBac2.png',
+            'https://i.redd.it/p5wcsfgp7x3e1.png'
+        ]
     },
     {
-        id: 14,
+        id: 11,
         title: 'Sports Legends 2024',
         description: 'The ultimate sports simulation featuring realistic physics, career modes, and competitive multiplayer across multiple sports disciplines.',
         price: 59.99,
@@ -262,124 +221,105 @@ export const mockGames: Game[] = [
         ]
     },
     {
-        id: 15,
-        title: 'Puzzle Master',
-        description: 'A collection of mind-bending puzzles and brain teasers that will challenge your problem-solving skills and creativity.',
-        price: 19.99,
-        releaseDate: '2023-10-01',
-        developer: 'Brain Games Studio',
-        publisher: 'Puzzle Entertainment',
-        genres: ['Puzzle', 'Casual', 'Educational'],
-        tags: ['Brain Training', 'Family', 'Relaxing'],
-        platforms: ['PC', 'Mobile', 'Nintendo'],
-        rating: 4.3,
-        coverImage: 'https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=2940&auto=format&fit=crop',
+        id: 12,
+        title: 'Cyberpunk Detective',
+        description: 'Solve crimes in a neon-lit futuristic city where technology and humanity collide. Use advanced AI tools and cybernetic enhancements to crack complex cases.',
+        price: 54.99,
+        discountedPrice: 44.99,
+        releaseDate: '2024-02-20',
+        developer: 'Neon Noir Studios',
+        publisher: 'Future Crime Games',
+        genres: ['Adventure', 'Mystery', 'Cyberpunk'],
+        tags: ['Detective', 'Story Rich', 'Futuristic'],
+        platforms: ['PC', 'PlayStation', 'Xbox'],
+        rating: 4.8,
+        coverImage: 'https://assets.fontsinuse.com/static/use-media-items/225/224662/upto-700xauto/66487d68/@2x/EGS_Cyberpunk2077_CDPROJEKTRED_S1_03_2560x1440-359e77d3cd0a40aebf3bbc130d14c5c7.jpeg',
         screenshots: [
-            'https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=2940&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=2940&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=2940&auto=format&fit=crop'
+            'https://pic.clubic.com/336428c52141617/1200x675/smart/cyberpunk-2077-phantom-liberty.jpg',
+            'https://media.lesechos.com/api/v1/images/view/5fd2542bd286c21c244f5c07/1280x720-webp/061112827148-web-tete.webp',
+            'https://pbs.twimg.com/media/EnwTGUvWMAEAc3j?format=jpg&name=large'
+        ]
+    },
+    {
+        id: 13,
+        title: 'Ancient Civilizations',
+        description: 'Lead your civilization from the Stone Age to the Space Age. Research technologies, build wonders, and compete with other civilizations in this epic strategy game.',
+        price: 49.99,
+        releaseDate: '2024-01-30',
+        developer: 'History Makers',
+        publisher: 'Strategy Games Co',
+        genres: ['Strategy', '4X', 'Historical'],
+        tags: ['Civilization', 'Turn-based', 'Historical'],
+        platforms: ['PC', 'PlayStation'],
+        rating: 4.7,
+        coverImage: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2884&auto=format&fit=crop',
+        screenshots: [
+            'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2884&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2884&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2884&auto=format&fit=crop'
+        ]
+    },
+    {
+        id: 14,
+        title: 'Zombie Survival Pro',
+        description: 'Survive in a post-apocalyptic world overrun by zombies. Build bases, craft weapons, and team up with other survivors in this intense survival game.',
+        price: 39.99,
+        discountedPrice: 29.99,
+        releaseDate: '2024-03-15',
+        developer: 'Apocalypse Games',
+        publisher: 'Survival Entertainment',
+        genres: ['Survival', 'Horror', 'Action'],
+        tags: ['Zombies', 'Multiplayer', 'Base Building'],
+        platforms: ['PC', 'PlayStation', 'Xbox'],
+        rating: 4.6,
+        coverImage: 'https://images.unsplash.com/photo-1563811771046-ba984ff30900?q=80&w=2940&auto=format&fit=crop',
+        screenshots: [
+            'https://images.unsplash.com/photo-1563811771046-ba984ff30900?q=80&w=2940&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1563811771046-ba984ff30900?q=80&w=2940&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1563811771046-ba984ff30900?q=80&w=2940&auto=format&fit=crop'
+        ]
+    },
+    {
+        id: 15,
+        title: 'Rider',
+        description: 'A motorcycle racing game that combines realism with action. Explore diverse tracks, from circuit to off-road, and customize your bike for maximum performance.',
+        price: 59.99,
+        discountedPrice: 49.99,
+        releaseDate: '2024-03-01',
+        developer: 'Two Wheels Studio',
+        publisher: 'Speed Masters Games',
+        genres: ['Racing', 'Simulation', 'Sports'],
+        tags: ['Motorcycle', 'Racing', 'Customization'],
+        platforms: ['PC', 'PlayStation', 'Xbox'],
+        rating: 4.8,
+        coverImage: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1650010/ss_e63042c898d6df888cb87b2611fded1daedacfd0.1920x1080.jpg',
+        screenshots: [
+            'https://ridevideogame.com/wp-content/uploads/2023/07/ride_5_sw-17_Wyper.png',
+            'https://traxion.gg/wp-content/uploads/2023/05/Ride-5-Rebel-Pack-DLC-content-revealed.jpg',
+            'https://wallpapercave.com/wp/wp12739334.jpg'
         ]
     },
     {
         id: 16,
-        title: 'Horror Mansion',
-        description: 'A spine-chilling survival horror game where you must escape a haunted mansion while uncovering its dark secrets.',
-        price: 39.99,
-        releaseDate: '2023-09-15',
-        developer: 'Nightmare Studios',
-        publisher: 'Horror Games Inc',
-        genres: ['Horror', 'Survival', 'Adventure'],
-        tags: ['Psychological', 'Atmospheric', 'Thriller'],
-        platforms: ['PC', 'PlayStation', 'Xbox'],
+        title: 'Fantasy Card Battler',
+        description: 'Build your deck and battle against players worldwide in this strategic card game. Collect rare cards, create powerful combinations, and climb the competitive ladder.',
+        price: 19.99,
+        releaseDate: '2024-02-15',
+        developer: 'Card Masters Studio',
+        publisher: 'Strategy Games Co',
+        genres: ['Card Game', 'Strategy', 'Multiplayer'],
+        tags: ['Collectible Cards', 'Competitive', 'Fantasy'],
+        platforms: ['PC', 'Mobile', 'Nintendo'],
         rating: 4.6,
-        coverImage: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2940&auto=format&fit=crop',
-        screenshots: [
-            'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2940&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2940&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2940&auto=format&fit=crop'
-        ]
-    },
-    {
-        id: 17,
-        title: 'City Builder Pro',
-        description: 'Create and manage your dream city in this comprehensive urban planning and management simulation.',
-        price: 34.99,
-        discountedPrice: 24.99,
-        releaseDate: '2023-12-10',
-        developer: 'Urban Games',
-        publisher: 'Simulation Studios',
-        genres: ['Simulation', 'Strategy', 'Management'],
-        tags: ['City Building', 'Economic', 'Creative'],
-        platforms: ['PC', 'PlayStation', 'Xbox'],
-        rating: 4.4,
-        coverImage: 'https://images.unsplash.com/photo-1608146115884-bd5ffd43af65?q=80&w=2880&auto=format&fit=crop',
-        screenshots: [
-            'https://images.unsplash.com/photo-1608146115884-bd5ffd43af65?q=80&w=2880&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1608146115884-bd5ffd43af65?q=80&w=2880&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1608146115884-bd5ffd43af65?q=80&w=2880&auto=format&fit=crop'
-        ]
-    },
-    {
-        id: 18,
-        title: 'Battle Royale Legends',
-        description: 'Join the ultimate battle royale experience with unique characters, dynamic environments, and intense combat.',
-        price: 0,
-        releaseDate: '2023-08-01',
-        developer: 'Battle Games',
-        publisher: 'Free-to-Play Entertainment',
-        genres: ['Battle Royale', 'Action', 'Multiplayer'],
-        tags: ['Free-to-Play', 'Competitive', 'Team-based'],
-        platforms: ['PC', 'PlayStation', 'Xbox', 'Mobile'],
-        rating: 4.2,
         coverImage: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2940&auto=format&fit=crop',
         screenshots: [
             'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2940&auto=format&fit=crop',
             'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2940&auto=format&fit=crop',
             'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2940&auto=format&fit=crop'
-        ],
-        featured: true
-    },
-    {
-        id: 19,
-        title: 'Cooking Master',
-        description: 'Become a culinary expert in this immersive cooking simulation game. Create dishes from around the world and build your restaurant empire.',
-        price: 29.99,
-        discountedPrice: 19.99,
-        releaseDate: '2023-11-20',
-        developer: 'Culinary Games',
-        publisher: 'Food Entertainment',
-        genres: ['Simulation', 'Cooking', 'Management'],
-        tags: ['Cooking', 'Restaurant', 'Creative'],
-        platforms: ['PC', 'Mobile', 'Nintendo'],
-        rating: 4.5,
-        coverImage: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2940&auto=format&fit=crop',
-        screenshots: [
-            'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2940&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2940&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2940&auto=format&fit=crop'
         ]
     },
     {
-        id: 20,
-        title: 'Wildlife Photographer',
-        description: 'Capture stunning wildlife moments in this photography simulation game. Travel to exotic locations and document rare animal species.',
-        price: 24.99,
-        releaseDate: '2023-10-15',
-        developer: 'Nature Studios',
-        publisher: 'Wildlife Games',
-        genres: ['Simulation', 'Adventure', 'Educational'],
-        tags: ['Photography', 'Nature', 'Exploration'],
-        platforms: ['PC', 'PlayStation', 'Xbox'],
-        rating: 4.6,
-        coverImage: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=2874&auto=format&fit=crop',
-        screenshots: [
-            'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=2874&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=2874&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=2874&auto=format&fit=crop'
-        ]
-    },
-    {
-        id: 21,
+        id: 17,
         title: 'Time Traveler',
         description: 'Navigate through different historical periods in this time-traveling adventure. Solve puzzles and prevent paradoxes while exploring ancient civilizations.',
         price: 39.99,
@@ -399,7 +339,7 @@ export const mockGames: Game[] = [
         featured: true
     },
     {
-        id: 22,
+        id: 18,
         title: 'Music Studio Pro',
         description: 'Create, mix, and produce your own music in this comprehensive music production game. Features real instruments and professional mixing tools.',
         price: 49.99,
@@ -419,7 +359,7 @@ export const mockGames: Game[] = [
         ]
     },
     {
-        id: 23,
+        id: 19,
         title: 'Martial Arts Master',
         description: 'Train, fight, and become a martial arts legend in this action-packed fighting game. Master different styles and compete in tournaments worldwide.',
         price: 44.99,
@@ -438,7 +378,7 @@ export const mockGames: Game[] = [
         ]
     },
     {
-        id: 24,
+        id: 20,
         title: 'Weather Wizard',
         description: 'Control the elements in this unique weather manipulation game. Create storms, clear skies, and solve environmental puzzles.',
         price: 34.99,
@@ -454,6 +394,140 @@ export const mockGames: Game[] = [
             'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=2865&auto=format&fit=crop',
             'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=2865&auto=format&fit=crop',
             'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=2865&auto=format&fit=crop'
+        ]
+    },
+    {
+        id: 21,
+        title: 'Space Engineers',
+        description: 'Build and manage your own space station in this sandbox game. Design ships, mine resources, and survive in the vastness of space.',
+        price: 24.99,
+        releaseDate: '2024-02-15',
+        developer: 'Keen Software House',
+        publisher: 'Space Games Inc',
+        genres: ['Sandbox', 'Simulation', 'Survival'],
+        tags: ['Space', 'Building', 'Engineering'],
+        platforms: ['PC', 'Xbox'],
+        rating: 4.6,
+        coverImage: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1133870/60b88eab8ca930ca55b62b58eaccdfbbd18bb58e/capsule_616x353.jpg',
+        screenshots: [
+            'https://assetsio.gnwcdn.com/1_rdRLe8b.jpg?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp',
+            'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/12/space-engineers-2-new-vrage3-engine.jpg',
+            'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/12/space-engineers-2-improved-multiplayer.jpg'
+        ]
+    },
+    {
+        id: 22,
+        title: 'Medieval Dynasty',
+        description: 'Build your legacy in a medieval world through farming, crafting, and expanding your influence across the kingdom.',
+        price: 39.99,
+        releaseDate: '2023-06-12',
+        developer: 'Kingdom Studios',
+        publisher: 'Historic Games',
+        genres: ['Simulation', 'Strategy', 'RPG'],
+        tags: ['Medieval', 'Building', 'Life Sim'],
+        platforms: ['PC', 'Xbox'],
+        rating: 4.3,
+        coverImage: 'https://www.toplitz-productions.com/files/toplitz/titel/DYNASTY/MEDIEVALDYNASTY/HEROART/ns-vr-news1920.jpg',
+        screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1129580/ss_7407b740f35f9385230ad14799b500a88b0eb84f.1920x1080.jpg',
+            'https://videogamesplus.ca/cdn/shop/products/2022-08-1715_17_52-MedievalDynasty_1245x700.png',
+            'https://ragequit.gr/wp-content/uploads/2021/10/medievaldynasty-village.jpg',
+            'https://videogamesplus.ca/cdn/shop/products/2022-08-1715_17_52-MedievalDynasty_1245x700.png'
+        ]
+    },
+    {
+        id: 23,
+        title: 'Subnautica',
+        description: 'An underwater adventure game set on an alien ocean planet. A massive, open world full of wonder and peril awaits you! Craft equipment, pilot submarines, and out-smart wildlife to explore lush coral reefs, volcanoes, cave systems, and more.',
+        price: 24.99,
+        releaseDate: '2023-11-20',
+        developer: 'Unknown Worlds Entertainment',
+        publisher: 'Unknown Worlds Entertainment',
+        genres: ['Survival', 'Adventure', 'Open World'],
+        tags: ['Underwater', 'Exploration', 'Crafting'],
+        platforms: ['PC', 'PlayStation', 'Xbox'],
+        rating: 4.8,
+        coverImage: 'https://cdn.akamai.steamstatic.com/steam/apps/264710/header.jpg',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/264710/ss_9beef1410f164c98dcc5b2d0e22d03f8949f3138.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/264710/ss_872822c5e50dc71f345416098d29f3e5f6e0f9c4.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/264710/ss_4bda6f67580d94832ed2d400484d0f8e0a0c2b1b.jpg'
+        ]
+    },
+    {
+        id: 24,
+        title: 'Valheim',
+        description: 'A brutal exploration and survival game for 1-10 players, set in a procedurally-generated purgatory inspired by viking culture.',
+        price: 19.99,
+        releaseDate: '2023-09-15',
+        developer: 'Iron Gate AB',
+        publisher: 'Coffee Stain Publishing',
+        genres: ['Survival', 'RPG', 'Adventure'],
+        tags: ['Viking', 'Open World', 'Multiplayer'],
+        platforms: ['PC', 'PlayStation', 'Xbox'],
+        rating: 4.8,
+        coverImage: 'https://cdn.akamai.steamstatic.com/steam/apps/892970/header.jpg',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/892970/ss_9beef1410f164c98dcc5b2d0e22d03f8949f3138.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/892970/ss_872822c5e50dc71f345416098d29f3e5f6e0f9c4.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/892970/ss_4bda6f67580d94832ed2d400484d0f8e0a0c2b1b.jpg'
+        ]
+    },
+    {
+        id: 25,
+        title: 'Deep Rock Galactic',
+        description: 'A 1-4 player co-op first-person shooter featuring space dwarves, 100% destructible environments, procedurally-generated caves, and endless hordes of alien monsters.',
+        price: 29.99,
+        releaseDate: '2023-08-10',
+        developer: 'Ghost Ship Games',
+        publisher: 'Coffee Stain Publishing',
+        genres: ['Action', 'FPS', 'Co-op'],
+        tags: ['Dwarves', 'Mining', 'Multiplayer'],
+        platforms: ['PC', 'PlayStation', 'Xbox'],
+        rating: 4.9,
+        coverImage: 'https://cdn.akamai.steamstatic.com/steam/apps/548430/header.jpg',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/548430/ss_9beef1410f164c98dcc5b2d0e22d03f8949f3138.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/548430/ss_872822c5e50dc71f345416098d29f3e5f6e0f9c4.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/548430/ss_4bda6f67580d94832ed2d400484d0f8e0a0c2b1b.jpg'
+        ]
+    },
+    {
+        id: 26,
+        title: 'Satisfactory',
+        description: 'A first-person open-world factory building game with a dash of exploration and combat. Play alone or with friends, explore an alien planet, and build multi-story factories.',
+        price: 29.99,
+        releaseDate: '2023-07-15',
+        developer: 'Coffee Stain Studios',
+        publisher: 'Coffee Stain Publishing',
+        genres: ['Simulation', 'Building', 'Open World'],
+        tags: ['Factory', 'Automation', 'Multiplayer'],
+        platforms: ['PC', 'PlayStation', 'Xbox'],
+        rating: 4.7,
+        coverImage: 'https://cdn.akamai.steamstatic.com/steam/apps/526870/header.jpg',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/526870/ss_9beef1410f164c98dcc5b2d0e22d03f8949f3138.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/526870/ss_872822c5e50dc71f345416098d29f3e5f6e0f9c4.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/526870/ss_4bda6f67580d94832ed2d400484d0f8e0a0c2b1b.jpg'
+        ]
+    },
+    {
+        id: 27,
+        title: 'Risk of Rain 2',
+        description: 'Escape a chaotic alien planet by fighting through hordes of frenzied monsters – with your friends, or on your own. Combine loot in surprising ways and master each character until you become the havoc you feared upon your first crash landing.',
+        price: 24.99,
+        releaseDate: '2023-05-20',
+        developer: 'Hopoo Games',
+        publisher: 'Gearbox Publishing',
+        genres: ['Action', 'Roguelike', 'Multiplayer'],
+        tags: ['Co-op', 'Procedural', 'Loot'],
+        platforms: ['PC', 'PlayStation', 'Xbox', 'Nintendo'],
+        rating: 4.8,
+        coverImage: 'https://cdn.akamai.steamstatic.com/steam/apps/632360/header.jpg',
+        screenshots: [
+            'https://cdn.akamai.steamstatic.com/steam/apps/632360/ss_9beef1410f164c98dcc5b2d0e22d03f8949f3138.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/632360/ss_872822c5e50dc71f345416098d29f3e5f6e0f9c4.jpg',
+            'https://cdn.akamai.steamstatic.com/steam/apps/632360/ss_4bda6f67580d94832ed2d400484d0f8e0a0c2b1b.jpg'
         ]
     }
 ];
@@ -481,24 +555,24 @@ export const categories: Category[] = [
         id: 4,
         name: 'Strategy',
         slug: 'strategy',
-        image: 'https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=2940&auto=format&fit=crop'
+        image: 'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/03/endless-legend-city.jpg'
     },
     {
         id: 5,
         name: 'Sports',
         slug: 'sports',
-        image: 'https://images.unsplash.com/photo-1511426463457-0571e247d816?q=80&w=2787&auto=format&fit=crop'
+        image: 'https://www.buzztime.com/business/wp-content/uploads/2015/09/interactive-sports-games-750-x-340.jpg'
     },
     {
         id: 6,
         name: 'Simulation',
         slug: 'simulation',
-        image: 'https://images.unsplash.com/photo-1608146115884-bd5ffd43af65?q=80&w=2880&auto=format&fit=crop'
+        image: 'https://i.pcmag.com/imagery/roundups/05jeQF8mdJPdJduVAxQDIGb-1..v1620155938.jpg'
     },
     {
         id: 7,
-        name: 'Indie',
-        slug: 'indie',
+        name: 'Arcade',
+        slug: 'Arcade',
         image: 'https://images.unsplash.com/photo-1544785349-c4a5301826fd?q=80&w=2938&auto=format&fit=crop'
     },
     {
