@@ -2,9 +2,8 @@ import React from 'react';
 import {Button} from '@/common/components/@radix-ui/button';
 import {ChevronLeft, ChevronRight} from 'lucide-react';
 import {useGames} from '@/common/hooks/useGames';
-import {useDispatch, useSelector} from 'react-redux';
 import {Pagination, setPagination} from '@/common/store/gameSlice';
-import {IRootState} from '@/app/ReduxStoreConfig';
+import {useAppDispatch, useAppSelector} from '@/common/hooks/useRedux';
 
 type PaginationProps = {
     hasActiveDetails?: boolean;
@@ -13,8 +12,8 @@ type PaginationProps = {
 const GamePagination: React.FC<PaginationProps> = props => {
     const {hasActiveDetails = false} = props;
     const {games} = useGames();
-    const dispatch = useDispatch();
-    const pagination = useSelector<IRootState, Pagination>((state) => state.game.pagination);
+    const pagination = useAppSelector<Pagination>(state => state.game.pagination);
+    const dispatch = useAppDispatch();
 
     const totalPages = Math.ceil(games.length / pagination.gamesPerPage);
 

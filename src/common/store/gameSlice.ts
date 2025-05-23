@@ -10,7 +10,7 @@ export interface Pagination {
     gamesPerPage: number;
 }
 
-interface CartItem {
+export interface Cart {
     game: Game;
     quantity: number;
 }
@@ -23,7 +23,7 @@ interface GameState {
     };
     searchQuery: string;
     sortBy: SortOptions
-    cart: CartItem[];
+    cart: Cart[];
     pagination: Pagination;
 }
 

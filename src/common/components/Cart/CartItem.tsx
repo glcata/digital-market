@@ -1,16 +1,16 @@
 import {Link} from 'react-router';
-import {useDispatch} from 'react-redux';
 import {Minus, Plus, X} from 'lucide-react';
 import {removeFromCart, updateQuantity} from '@/common/store/gameSlice';
 import {Button} from '@/common/components/@radix-ui/button';
 import {CartItem as CartItemType} from '@/common/lib/types';
+import {useAppDispatch} from '@/common/hooks/useRedux';
 
 interface CartItemProps {
     item: CartItemType;
 }
 
 const CartItem = ({item}: CartItemProps) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const {game, quantity} = item;
 
     const handleRemove = () => {
