@@ -9,7 +9,11 @@ import eslintTs from 'typescript-eslint';
 export default eslintTs.config([
     eslintJs.configs.recommended,
     eslintTs.configs.recommended,
-    { ignores: ['build/**/*', 'coverage/**/*', 'public/**/*'], },
+    {
+        ignores:
+            ['build/**/*', 'coverage/**/*', 'public/**/*',
+                'src/common/components/@radix-ui/**/*'],
+    },
     {
         plugins: {
             import: importPlugin,
