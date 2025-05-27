@@ -24,7 +24,7 @@ const GamePurchase = ({game, onAddToCart}: GamePurchaseProps) => {
                 {hasDiscount ? (
                     <>
                         <span
-                            className='text-2xl font-bold text-gaming-DEFAULT'>${game.discountedPrice!.toFixed(2)}</span>
+                            className='text-2xl font-bold'>${game.discountedPrice!.toFixed(2)}</span>
                         <span className='text-lg text-muted-foreground line-through'>${game.price.toFixed(2)}</span>
                         <Badge className='bg-gaming-accent text-white'>-{discountPercentage}%</Badge>
                     </>
@@ -53,8 +53,7 @@ const PurchaseInfo = () => {
         <div className='mt-6 text-sm text-muted-foreground'>
             <p className='flex items-center gap-1.5 mb-2'>
                 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none'
-                     stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'
-                     className='text-gaming-DEFAULT'>
+                     stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'>
                     <rect width='20' height='16' x='2' y='4' rx='2' />
                     <path d='M6 8h.01' />
                     <path d='M18 8h.01' />
@@ -70,16 +69,14 @@ const PurchaseInfo = () => {
             </p>
             <p className='flex items-center gap-1.5 mb-2'>
                 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none'
-                     stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'
-                     className='text-gaming-DEFAULT'>
+                     stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'>
                     <polygon points='5 3 19 12 5 21' />
                 </svg>
                 Instant delivery
             </p>
             <p className='flex items-center gap-1.5'>
                 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none'
-                     stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'
-                     className='text-gaming-DEFAULT'>
+                     stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'>
                     <path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z' />
                     <path d='m9 12 2 2 4-4' />
                 </svg>

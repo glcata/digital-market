@@ -70,4 +70,12 @@
     .card-hover-effect {
         @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-xl;
     }
+
+    .game-text-primary {
+        @apply transition-all duration-300 hover:text-primary;
+    }
+
+    .game-text-primary-reverse {
+        @apply text-primary sm:text-inherit transition-all duration-300 hover:text-primary-foreground sm:hover:text-primary;
+    }
 }

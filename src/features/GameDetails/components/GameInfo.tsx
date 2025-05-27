@@ -22,9 +22,9 @@ const GameInfo = ({game}: GameInfoProps) => {
 
             <Tabs defaultValue='about' className='mt-6'>
                 <TabsList className='grid grid-cols-3 mb-6'>
-                    <TabsTrigger value='about'>About</TabsTrigger>
-                    <TabsTrigger value='details'>Details</TabsTrigger>
-                    <TabsTrigger value='system'>System Requirements</TabsTrigger>
+                    <TabsTrigger value='about' className='text-xs sm:text-sm'>About</TabsTrigger>
+                    <TabsTrigger value='details' className='text-xs sm:text-sm'>Details</TabsTrigger>
+                    <TabsTrigger value='system' className='text-[10px] sm:text-sm'>System Requirements</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value='about' className='space-y-4'>

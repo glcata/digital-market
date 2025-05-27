@@ -76,7 +76,7 @@ const CartDialog = ({open, onOpenChange}: CartDialogProps) => {
 
                 {checkoutCompleted ? (
                     <div className='flex flex-col items-center py-10 text-center'>
-                        <CheckCircle2 className='h-16 w-16 text-gaming-DEFAULT mb-4' />
+                        <CheckCircle2 className='h-16 w-16 mb-4' />
                         <h3 className='text-xl font-medium mb-2'>
                             {checkoutSuccess ? 'Order Completed!' : 'Processing your order...'}
                         </h3>

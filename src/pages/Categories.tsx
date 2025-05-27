@@ -21,7 +21,7 @@ const Categories = () => {
         <div className='mt-12'>
             <div className='flex justify-between items-center mb-6'>
                 <h2 className='text-2xl font-bold'>Categories</h2>
-                <Link to='/categories' className='text-sm text-gaming-DEFAULT flex items-center hover:underline'>
+                <Link to='/categories' className='text-sm game-text-primary flex items-center hover:underline'>
                     View all <ArrowRight className='h-3.5 w-3.5 ml-1' />
                 </Link>
             </div>
@@ -39,7 +39,7 @@ const Categories = () => {
                         />
                         <div className={cn(
                             'absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/80 via-black/50 to-transparent',
-                            'transition-all duration-300 group-hover:from-gaming-DEFAULT/80'
+                            'transition-all duration-300'
                         )}>
                             <h3 className='text-xl font-bold text-white'>{category.name}</h3>
                         </div>

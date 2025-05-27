@@ -35,7 +35,7 @@ const CartItem = ({item}: CartItemProps) => {
             </div>
             <div className='ml-4 flex flex-1 flex-col'>
                 <div className='flex justify-between text-base font-medium'>
-                    <Link to={`/game/${game.id}`} className='hover:text-gaming-DEFAULT'>
+                    <Link to={`/game/${game.id}`} className='hover:text-gaming-accent'>
                         <h3 className='text-sm'>{game.title}</h3>
                     </Link>
                     <Button
