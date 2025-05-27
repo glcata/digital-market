@@ -69,7 +69,7 @@ jobs:
         id: changelog
         run: |
           echo "body<<EOF" >> $GITHUB_OUTPUT
-          git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:'- %s' >> $GITHUB_OUTPUT
+          git log $(git tag | tail | head -1)..HEAD --pretty=format:'- %s' >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
