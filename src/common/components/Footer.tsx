@@ -1,7 +1,9 @@
 import {Gamepad2} from 'lucide-react';
 
 const Footer = () => {
-    const currentYear = new Date().getFullYear();
+    const currentYear = new Date().getFullYear(),
+        appVersion = import.meta.env.VITE_APP_VERSION;
+
     return (
         <footer className='border-t border-border py-8'>
             <div className='container px-4'>
@@ -9,6 +11,7 @@ const Footer = () => {
                     <div className='flex items-center space-x-2 mb-4 md:mb-0'>
                         <Gamepad2 className='h-6 w-6 text-gaming-DEFAULT' />
                         <span className='text-xl font-bold'>Digital Market</span>
+                        <span className='text-xs font-bold text-primary'>v{appVersion}</span>
                     </div>
                     <div className='flex flex-wrap justify-center gap-4 md:gap-8'>
                         <a href='#' className='text-sm hover:text-gaming-DEFAULT'>About</a>

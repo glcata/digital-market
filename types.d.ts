@@ -1,7 +1,7 @@
 declare global {
     interface ImportMeta {
         readonly env: {
-            VITE_APP_EXAMPLE: string
+            VITE_APP_VERSION: string
         }
     }
     interface Window {
