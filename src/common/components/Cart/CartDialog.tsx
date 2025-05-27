@@ -11,8 +11,8 @@ import {
 } from '@/common/components/@radix-ui/dialog';
 import {Button} from '@/common/components/@radix-ui/button';
 import CartItem from '@/common/components/Cart/CartItem';
-import {Cart, clearCart} from '@/common/store/gameSlice';
 import {useAppDispatch, useAppSelector} from '@/common/hooks/useRedux';
+import {Cart, clearCart} from '@/common/store';
 
 interface CartDialogProps {
     open: boolean;

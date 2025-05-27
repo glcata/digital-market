@@ -1,4 +1,4 @@
-import {Category, Game} from '@/common/lib/types';
+import {Category, Game} from '@/common/store';
 
 export const mockGames: Game[] = [
     {
@@ -55,9 +55,9 @@ export const mockGames: Game[] = [
         rating: 4.6,
         coverImage: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop',
         screenshots: [
-            'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop'
+            'https://cdnb.artstation.com/p/assets/images/images/011/423/951/large/antoine-van-bergen-hyperion-a3-03.jpg',
+            'https://as2.ftcdn.net/v2/jpg/11/17/46/83/1000_F_1117468345_w6lYi5DTiF4BkeEIdI2WRruPob7kHraT.jpg',
+            'https://as2.ftcdn.net/v2/jpg/12/56/52/07/1000_F_1256520736_bAF5trxLVDZorklxGXOFuk1bJDWl1o0Y.jpg'
         ],
         featured: true
     },
@@ -155,9 +155,9 @@ export const mockGames: Game[] = [
         rating: 4.7,
         coverImage: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=2940&auto=format&fit=crop',
         screenshots: [
-            'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=2940&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=2940&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=2940&auto=format&fit=crop'
+            'https://ulstein.com/imager/images/References/9352/PHC-OceanExplorerArrival11_2021-10-19-115011_rtet_f906cb2ad194a18d4288d967373bffb8.jpg',
+            'https://images6.alphacoders.com/115/1158899.jpg',
+            'https://wallpapers.com/images/hd/navagio-ocean-desktop-rfvjn2g8dm4vayed.jpg'
         ],
         featured: true
     },

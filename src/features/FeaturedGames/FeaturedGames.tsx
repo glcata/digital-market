@@ -2,7 +2,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import {Autoplay, Navigation, Pagination} from 'swiper/modules';
 import {Button} from '@/common/components/@radix-ui/button';
 import {Link} from 'react-router';
-import {useGetFeaturedGamesQuery} from '@/common/store/api';
+import {useGetFeaturedGamesQuery} from '@/common/store';
 import {Skeleton} from '@/common/components/@radix-ui/skeleton';
 
 import 'swiper/css';

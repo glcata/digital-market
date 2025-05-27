@@ -1,8 +1,7 @@
 import {Link} from 'react-router';
 import {Minus, Plus, X} from 'lucide-react';
-import {removeFromCart, updateQuantity} from '@/common/store/gameSlice';
+import {CartItem as CartItemType, removeFromCart, updateQuantity} from '@/common/store';
 import {Button} from '@/common/components/@radix-ui/button';
-import {CartItem as CartItemType} from '@/common/lib/types';
 import {useAppDispatch} from '@/common/hooks/useRedux';
 
 interface CartItemProps {

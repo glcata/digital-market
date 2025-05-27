@@ -1,31 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Game} from '@/common/lib/types';
-
-export type SortOptions = 'relevance' | 'price-low' | 'price-high' | 'rating' | 'new';
-
-export interface Pagination {
-    currentPage: number;
-    startIndex: number,
-    endIndex: number;
-    gamesPerPage: number;
-}
-
-export interface Cart {
-    game: Game;
-    quantity: number;
-}
-
-interface GameState {
-    selectedFilters: {
-        platforms: string[];
-        genres: string[];
-        priceRange: [number, number];
-    };
-    searchQuery: string;
-    sortBy: SortOptions
-    cart: Cart[];
-    pagination: Pagination;
-}
+import {Game, GameState, Pagination, SortOptions} from '@/common/store';
 
 const initialState: GameState = {
     selectedFilters: {

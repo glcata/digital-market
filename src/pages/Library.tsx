@@ -15,7 +15,7 @@ import {Checkbox} from '@/common/components/@radix-ui/checkbox';
 import {Label} from '@/common/components/@radix-ui/label';
 import {Skeleton} from '@/common/components/@radix-ui/skeleton';
 import GameCard from '@/common/components/GameCard';
-import {SortOptions} from '@/common/store/gameSlice';
+import {SortOptions} from '@/common/store';
 import {useGames} from '@/common/hooks/useGames';
 import GamePagination from '@/common/components/GamePagination';
 

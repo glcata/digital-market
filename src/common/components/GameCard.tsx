@@ -1,5 +1,5 @@
 import {Link} from 'react-router';
-import {Game} from '@/common/lib/types';
+import {Game} from '@/common/store';
 import {Badge} from '@/common/components/@radix-ui/badge';
 import {cn} from '@/common/lib/utils';
 

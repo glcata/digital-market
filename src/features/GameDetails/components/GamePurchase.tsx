@@ -1,6 +1,6 @@
 import {Button} from '@/common/components/@radix-ui/button';
 import {Badge} from '@/common/components/@radix-ui/badge';
-import {Game} from '@/common/lib/types';
+import {Game} from '@/common/store';
 import {ShoppingCart} from 'lucide-react';
 
 interface GamePurchaseProps {

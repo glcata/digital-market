@@ -64,4 +64,6 @@ yarn build
 
 ## 📝 Notes
 
-This project was developed by Catalin Glavan for demonstration purposes, showcasing the capabilities and design of a modern digital marketplace interface.
+> This project was developed by Catalin Glavan for showcasing the capabilities and design of a modern digital marketplace interface.
+
+> All content images, text is AI-generated and used only for UI demonstration purposes.
