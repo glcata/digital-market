@@ -1,15 +1,15 @@
-import {useGetGamesQuery} from '@/common/store/api';
+import {useAppDispatch, useAppSelector} from '@/common/hooks/useRedux';
 import {
+    Game,
     Pagination,
     resetFilters,
     setSearchQuery,
     setSelectedGenres,
     setSelectedPlatforms,
     setSortBy,
-    SortOptions
-} from '@/common/store/gameSlice';
-import {Game} from '@/common/lib/types';
-import {useAppDispatch, useAppSelector} from '@/common/hooks/useRedux';
+    SortOptions,
+    useGetGamesQuery
+} from '@/common/store';
 
 export const useGames = () => {
     const {data: games, isLoading} = useGetGamesQuery();

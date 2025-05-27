@@ -5,9 +5,9 @@ import {Button} from '@/common/components/@radix-ui/button';
 import {Input} from '@/common/components/@radix-ui/input';
 import {Sheet, SheetContent, SheetTrigger} from '@/common/components/@radix-ui/sheet';
 import {useMediaQuery} from '@/common/hooks/useMediaQuery';
-import {setSearchQuery} from '@/common/store/gameSlice';
 import {CartDialog} from '@/common/components/Cart';
 import {useAppDispatch, useAppSelector} from '@/common/hooks/useRedux';
+import {setSearchQuery} from '@/common/store';
 
 const Header = () => {
     const [cartOpen, setCartOpen] = useState(false);

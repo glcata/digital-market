@@ -2,8 +2,8 @@ import React from 'react';
 import {Button} from '@/common/components/@radix-ui/button';
 import {ChevronLeft, ChevronRight} from 'lucide-react';
 import {useGames} from '@/common/hooks/useGames';
-import {Pagination, setPagination} from '@/common/store/gameSlice';
 import {useAppDispatch, useAppSelector} from '@/common/hooks/useRedux';
+import {Pagination, setPagination} from '@/common/store';
 
 type PaginationProps = {
     hasActiveDetails?: boolean;

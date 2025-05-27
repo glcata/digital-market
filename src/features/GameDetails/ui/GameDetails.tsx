@@ -1,6 +1,5 @@
 import {useParams} from 'react-router';
-import {useGetGameByIdQuery} from '@/common/store/api';
-import {addToCart} from '@/common/store/gameSlice';
+import {addToCart, useGetGameByIdQuery} from '@/common/store';
 import {toast} from '@/common/hooks/useToast';
 import Newsletter from '@/common/components/Newsletter';
 import {

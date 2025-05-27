@@ -1,16 +1,16 @@
 import {configureStore} from '@reduxjs/toolkit';
-import gameReducer from '@/common/store/gameSlice';
-import {gamesApi} from '@/common/store/api';
+import {BaseApi} from '@/app/api/BaseApi';
+import {gameReducer} from '@/common/store';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const Store = configureStore({
     devTools: !isProduction,
     reducer: {
         game: gameReducer,
-        [gamesApi.reducerPath]: gamesApi.reducer
+        [BaseApi.reducerPath]: BaseApi.reducer
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(gamesApi.middleware)
+        getDefaultMiddleware().concat(BaseApi.middleware)
 })
 
 export type IRootState = ReturnType<typeof Store.getState>;

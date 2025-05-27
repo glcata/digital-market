@@ -67,7 +67,7 @@ jobs:
 
       - name: Generate changelog from previous tag
         run: |
-          echo "# Changelog" > ${{ github.workspace }}/CHANGELOG.txt
+          echo "## Changelog" > ${{ github.workspace }}/CHANGELOG.txt
           echo "" >> ${{ github.workspace }}/CHANGELOG.txt
           git log $(git tag | tail | head -1)..HEAD --pretty=format:'- %s' >> ${{ github.workspace }}/CHANGELOG.txt
 

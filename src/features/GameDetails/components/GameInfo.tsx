@@ -1,7 +1,7 @@
 import {Badge} from '@/common/components/@radix-ui/badge';
 import {Tabs, TabsContent, TabsList, TabsTrigger} from '@/common/components/@radix-ui/tabs';
-import {Game} from '@/common/lib/types';
 import {Star} from 'lucide-react';
+import {Game} from '@/common/store';
 
 interface GameInfoProps {
     game: Game;

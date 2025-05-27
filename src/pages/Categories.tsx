@@ -1,5 +1,5 @@
 import {Link} from 'react-router';
-import {useGetCategoriesQuery} from '@/common/store/api';
+import {useGetCategoriesQuery} from '@/common/store';
 import {Skeleton} from '@/common/components/@radix-ui/skeleton';
 import {cn} from '@/common/lib/utils';
 import {ArrowRight} from 'lucide-react';
