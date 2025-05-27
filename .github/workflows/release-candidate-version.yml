@@ -65,17 +65,17 @@ jobs:
         run: |
           echo "tag=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
 
-      - name: Get changelog from previous tag
-        id: changelog
+      - name: Generate changelog from previous tag
         run: |
-          git_log="$(git log $(git tag | tail | head -1)..HEAD --pretty=format:'- %s')"
-          echo "body=${git_log}" >> "${GITHUB_OUTPUT}"
+          echo "# Changelog" > ${{ github.workspace }}/CHANGELOG.txt
+          echo "" >> ${{ github.workspace }}/CHANGELOG.txt
+          git log $(git tag | tail | head -1)..HEAD --pretty=format:'- %s' >> ${{ github.workspace }}/CHANGELOG.txt
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.get_tag.outputs.tag }}
           name: Release ${{ steps.get_tag.outputs.tag }}
-          body: ${{ steps.changelog.outputs.body }}
+          body_path: ${{ github.workspace }}/CHANGELOG.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
