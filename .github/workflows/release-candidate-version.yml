@@ -70,7 +70,8 @@ jobs:
             echo "body<<EOF"
             git log -1 HEAD~1 --pretty=format:%B
             echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+          } > temp_output.txt
+          cat temp_output.txt >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
