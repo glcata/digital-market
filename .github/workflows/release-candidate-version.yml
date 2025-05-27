@@ -68,11 +68,8 @@ jobs:
       - name: Get changelog from previous tag
         id: changelog
         run: |
-          {
-            echo "body<<EOF"
-            git log $(git tag | tail | head -1)..HEAD --pretty=format:'- %s'
-            echo "EOF"
-          } >> $GITHUB_OUTPUT
+          git_log="$(git log $(git tag | tail | head -1)..HEAD --pretty=format:'- %s')"
+          echo "body=${git_log}" >> "${GITHUB_OUTPUT}"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
