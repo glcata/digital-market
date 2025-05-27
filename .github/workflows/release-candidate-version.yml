@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -45,14 +47,14 @@ jobs:
         run: |
           echo "type=${{ github.event.inputs.bump_type || 'patch' }}" >> $GITHUB_OUTPUT
 
-#      - name: Bump version
-#        run: |
-#          npm version ${{ steps.bump.outputs.type }} -m "%s"
-#        env:
-#          GIT_COMMITTER_NAME: github-actions[bot]
-#          GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
-#          GIT_AUTHOR_NAME: github-actions[bot]
-#          GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
+      - name: Bump version
+        run: |
+          npm version ${{ steps.bump.outputs.type }} -m "%s"
+        env:
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
 
       - name: Push changes
         run: |
@@ -66,7 +68,7 @@ jobs:
       - name: Get previous commit message
         id: get_body
         run: |
-          MESSAGE=$(git log -1 HEAD~1 --pretty=format:%B | tr '\n' ' ')
+          MESSAGE=$(git log -1 HEAD~1 --pretty=format:%B)
           echo "body=$MESSAGE" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
