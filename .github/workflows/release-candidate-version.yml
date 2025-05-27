@@ -1,0 +1,57 @@
+name: Bumping Version Workflow
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      bump_type:
+        description: 'Choose version bump type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    if: |
+        github.actor != 'github-actions[bot]' &&
+        github.actor != 'dependabot[bot]'
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine bump type
+        id: bump
+        run: |
+          echo "type=${{ github.event.inputs.bump_type || 'patch' }}" >> $GITHUB_OUTPUT
+
+      - name: Bump version
+        run: |
+          npm version ${{ steps.bump.outputs.type }} -m "bump version to %s"
+        env:
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
+
+      - name: Push changes
+        run: |
+          git push origin HEAD --follow-tags
