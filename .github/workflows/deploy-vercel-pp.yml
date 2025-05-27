@@ -6,7 +6,7 @@ env:
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: [ "Bumping Version Workflow" ]
+    workflows: [ "Release Version Workflow" ]
     types:
       - completed
 
