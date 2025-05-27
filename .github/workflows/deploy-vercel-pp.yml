@@ -12,8 +12,9 @@ on:
 
 jobs:
   Deploy-Preview:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    environment: Pre-Production
 
     steps:
       - name: Checkout repository
