@@ -20,8 +20,8 @@ jobs:
   bump-version:
     runs-on: ubuntu-latest
     if: |
-        github.actor != 'github-actions[bot]' &&
-        github.actor != 'dependabot[bot]'
+      github.actor != 'github-actions[bot]' &&
+      github.actor != 'dependabot[bot]'
     permissions:
       contents: write
       pull-requests: write
@@ -66,7 +66,11 @@ jobs:
       - name: Get previous commit message
         id: get_body
         run: |
-          echo "body=$(git log -1 HEAD~1 --pretty=format:%B)" >> $GITHUB_OUTPUT
+          {
+            echo "body<<EOF"
+            git log -1 HEAD~1 --pretty=format:%B
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
