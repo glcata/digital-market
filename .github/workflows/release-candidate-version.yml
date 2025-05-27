@@ -65,17 +65,18 @@ jobs:
         run: |
           echo "tag=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
 
-      - name: Get previous commit message
-        id: get_body
+      - name: Get changelog from previous tag
+        id: changelog
         run: |
-          MESSAGE=$(git log -1 HEAD~1 --pretty=format:%B)
-          echo "body=$MESSAGE" >> $GITHUB_OUTPUT
+          echo "body<<EOF" >> $GITHUB_OUTPUT
+          git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:'- %s' >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.get_tag.outputs.tag }}
           name: Release ${{ steps.get_tag.outputs.tag }}
-          body: ${{ steps.get_body.outputs.body }}
+          body: ${{ steps.changelog.outputs.body }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
