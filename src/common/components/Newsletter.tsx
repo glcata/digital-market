@@ -6,7 +6,7 @@ const Newsletter = () => {
     return (
         <div className='mt-16 mb-10 bg-muted/50 rounded-xl p-8 text-center'>
             <div className='max-w-3xl mx-auto'>
-                <Gamepad2 className='h-12 w-12 text-gaming-DEFAULT mx-auto mb-4' />
+                <Gamepad2 className='h-12 w-12 mx-auto mb-4' />
                 <h2 className='text-2xl md:text-3xl font-bold mb-4'>
                     Stay Updated with Gaming News
                 </h2>

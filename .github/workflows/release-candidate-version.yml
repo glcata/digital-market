@@ -1,4 +1,4 @@
-name: Bumping Version Workflow
+name: Release Version Workflow
 
 on:
   push:

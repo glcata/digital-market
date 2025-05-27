@@ -8,7 +8,7 @@ const App = () => (
     <div className='min-h-screen flex flex-col bg-background'>
         <Header />
         <main className='flex-1'>
-            <div className='container px-10 py-3'>
+            <div className='container px-5 sm:px-10 py-3'>
                 <Outlet />
             </div>
         </main>

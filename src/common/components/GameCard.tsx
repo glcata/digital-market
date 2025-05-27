@@ -39,7 +39,7 @@ const GameCard = ({game, className}: GameCardProps) => {
                 }
             </div>
             <div className='p-4 min-w-60'>
-                <h3 className='font-bold text-lg line-clamp-1 group-hover:text-gaming-DEFAULT transition-colors'>
+                <h3 className='font-bold text-lg line-clamp-1 transition-colors'>
                     {game.title}
                 </h3>
                 <div className='flex flex-wrap gap-1 mt-1.5 mb-2.5'>

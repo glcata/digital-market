@@ -30,14 +30,14 @@ const Header = () => {
     return (
         <header
             className='sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border'>
-            <div className='container px-10 flex h-16 items-center justify-between'>
+            <div className='container px-5 sm:px-10 flex h-16 items-center justify-between'>
                 <div className='flex items-center gap-6'>
                     <Link to='/' className='flex items-center space-x-2'>
-                        <Gamepad2 className='h-6 w-6 text-gaming-DEFAULT' />
-                        <span className='text-xl font-bold hover:text-primary transition'>Digital Market</span>
+                        <Gamepad2 className='h-6 w-6 flex-shrink-0' />
+                        <span className='lg:text-xl font-bold hover:text-primary transition flex-shrink-0'>Digital Market</span>
                     </Link>
                     {!isMobile && (
-                        <nav className='hidden md:flex items-center space-x-6'>
+                        <nav className='hidden md:flex items-center space-x-4 lg:space-x-6 overflow-hidden'>
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
@@ -52,7 +52,7 @@ const Header = () => {
                 </div>
                 <div className='flex items-center flex-shrink-0 space-x-3 ml-6'>
                     {!isMobile && (
-                        <div className='relative w-full max-w-sm'>
+                        <div className='lg:block hidden relative w-full max-w-sm'>
                             <Search className='absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground' />
                             <Input
                                 type='search'
