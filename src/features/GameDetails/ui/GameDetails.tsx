@@ -1,3 +1,4 @@
+import {useEffect} from 'react';
 import {useParams} from 'react-router';
 import {addToCart, useGetGameByIdQuery} from '@/common/store';
 import {toast} from '@/common/hooks/useToast';
@@ -16,6 +17,8 @@ const GameDetails = () => {
     const {id} = useParams();
     const dispatch = useAppDispatch();
     const {data: game, isLoading, error} = useGetGameByIdQuery(Number(id));
+
+    useEffect(() => window.scrollTo({top: 0, behavior: 'smooth'}), []);
 
     const handleAddToCart = () => {
         if (game) {
