@@ -44,6 +44,9 @@ jobs:
       - name: Set Github SHA short
         run: echo "GITHUB_SHA_SHORT=$(echo ${{ github.sha }} | head -c 7)" >> $GITHUB_ENV
 
+      - name: Set Github last tag
+        run: echo "GITHUB_LAST_TAG=$(git for-each-ref --sort=-creatordate --format='%(refname:short)' refs/tags | head -n 1 | sed 's/^v//')" >> $GITHUB_ENV
+
       - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@v5
@@ -52,6 +55,7 @@ jobs:
           push: true
           platforms: linux/arm64/v8
           tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.GITHUB_LAST_TAG }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.GITHUB_SHA_SHORT }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           labels: ${{ steps.meta.outputs.labels }}
