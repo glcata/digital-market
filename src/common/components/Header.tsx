@@ -8,9 +8,11 @@ import {useMediaQuery} from '@/common/hooks/useMediaQuery';
 import {CartDialog} from '@/common/components/Cart';
 import {useAppDispatch, useAppSelector} from '@/common/hooks/useRedux';
 import {setSearchQuery} from '@/common/store';
+import LoginPanel from '@/common/components/LoginPanel';
 
 const Header = () => {
     const [cartOpen, setCartOpen] = useState(false);
+    const [loginOpen, setLoginOpen] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
     const searchQuery = useAppSelector<string>(state => state.game.searchQuery);
     const cart = useAppSelector(state => state.game.cart);
@@ -77,7 +79,7 @@ const Header = () => {
                             </span>
                         )}
                     </Button>
-                    <Button variant='ghost' size='sm'>
+                    <Button variant='ghost' size='sm' onClick={() => setLoginOpen(true)}>
                         <User className='h-4 w-4' />
                     </Button>
                     {isMobile && (
@@ -112,10 +114,8 @@ const Header = () => {
                             </SheetContent>
                         </Sheet>
                     )}
-                    <CartDialog
-                        open={cartOpen}
-                        onOpenChange={setCartOpen}
-                    />
+                    <CartDialog open={cartOpen} onOpenChange={setCartOpen} />
+                    <LoginPanel open={loginOpen} onOpenChange={setLoginOpen} />
                 </div>
             </div>
         </header>
