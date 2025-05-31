@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle,} from '@/common/components/@radix-ui/dialog';
 import {Button} from '@/common/components/@radix-ui/button';
 import {Checkbox} from '@/common/components/@radix-ui/checkbox';
@@ -13,9 +13,15 @@ type LoginPanelProps = {
 }
 
 const LoginPanel: React.FC<LoginPanelProps> = ({open, onOpenChange}: LoginPanelProps) => {
+    const [rememberCheck, setRememberCheck] = useState<boolean>(false);
+    const [loginData, setLoginData] = useState<Record<'email' | 'password', string>>({
+        'email': '',
+        'password': ''
+    });
+
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className='max-w-sm h-[50vh] overflow-hidden flex flex-col'>
+            <DialogContent className='sm:max-w-sm flex flex-col'>
                 <DialogHeader className='mb-2'>
                     <DialogTitle className='flex items-center text-xl'>Welcome back</DialogTitle>
                 </DialogHeader>
@@ -27,9 +33,9 @@ const LoginPanel: React.FC<LoginPanelProps> = ({open, onOpenChange}: LoginPanelP
                             <Input
                                 type='email'
                                 placeholder='Enter your Email'
-                                className='pl-8 bg-muted/50 border-0'
-                                value={''}
-                                // onChange={(e) => handleSearchChange(e.target.value)}
+                                className='text-sm pl-8 bg-muted/50 border-0'
+                                value={loginData.email}
+                                onChange={(e) => setLoginData({...loginData, email: e.target.value})}
                             />
                         </div>
                     </div>
@@ -40,19 +46,23 @@ const LoginPanel: React.FC<LoginPanelProps> = ({open, onOpenChange}: LoginPanelP
                             <Input
                                 type='password'
                                 placeholder='Enter your Password'
-                                className='pl-8 bg-muted/50 border-0'
-                                value={''}
-                                // onChange={(e) => handleSearchChange(e.target.value)}
+                                className='text-sm pl-8 bg-muted/50 border-0'
+                                value={loginData.password}
+                                onChange={(e) => setLoginData({...loginData, password: e.target.value})}
                             />
                         </div>
                     </div>
                     <div className='flex items-center justify-between gap-2'>
                         <Checkbox
                             id={`id`}
-                            checked={false}
-                            // onCheckedChange={() => togglePlatform(platform)}
+                            checked={rememberCheck}
+                            onCheckedChange={() => setRememberCheck(!rememberCheck)}
                         />
-                        <span className='flex-1 text-sm'>Remember me</span>
+                        <span
+                            className='flex-1 text-sm cursor-pointer select-none'
+                            onClick={() => setRememberCheck(!rememberCheck)}>
+                            Remember me
+                        </span>
                         <a href='#' className='text-sm hover:game-text-primary'>Forgot password?</a>
                     </div>
                     <Button variant='secondary' className='mt-4 p-6'> Sign In</Button>
@@ -64,7 +74,7 @@ const LoginPanel: React.FC<LoginPanelProps> = ({open, onOpenChange}: LoginPanelP
                         <span className='text-sm'>Or With</span>
                     </div>
                 </div>
-                <DialogFooter className='flex flex-row sm:items-center sm:justify-center gap-2'>
+                <DialogFooter className='flex flex-row justify-center sm:items-center sm:justify-center sm:gap-2 gap-4'>
                     <Button variant='outline' className='p-6'>
                         <FcGoogle /> Google
                     </Button>

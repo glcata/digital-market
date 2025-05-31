@@ -14,12 +14,12 @@ import CartItem from '@/common/components/Cart/CartItem';
 import {useAppDispatch, useAppSelector} from '@/common/hooks/useRedux';
 import {Cart, clearCart} from '@/common/store';
 
-interface CartDialogProps {
+interface CartPanelProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
 }
 
-const CartDialog = ({open, onOpenChange}: CartDialogProps) => {
+const CartPanel = ({open, onOpenChange}: CartPanelProps) => {
     const dispatch = useAppDispatch();
     const cart = useAppSelector<Cart[]>(state => state.game.cart);
     const [checkoutCompleted, setCheckoutCompleted] = useState(false);
@@ -157,4 +157,4 @@ const CartDialog = ({open, onOpenChange}: CartDialogProps) => {
     );
 };
 
-export default CartDialog;
+export default CartPanel;

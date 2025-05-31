@@ -1,1 +1,1 @@
-export {default as CartDialog} from './CartDialog';
+export {default as CartDialog} from './CartPanel';
