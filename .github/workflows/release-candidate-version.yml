@@ -69,7 +69,7 @@ jobs:
         run: |
           echo "## Changelog" > ${{ github.workspace }}/CHANGELOG.txt
           echo "" >> ${{ github.workspace }}/CHANGELOG.txt
-          git log $(git tag | tail | head -1)..HEAD --pretty=format:'- %s' >> ${{ github.workspace }}/CHANGELOG.txt
+          git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:'- %s' >> ${{ github.workspace }}/CHANGELOG.txt
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
