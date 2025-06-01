@@ -19,18 +19,30 @@ const LoginPanel: React.FC<LoginPanelProps> = ({open, onOpenChange}: LoginPanelP
         'password': ''
     });
 
+    const handleLoginSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        console.log('Login data:', loginData);
+        console.log('Remember Me:', rememberCheck);
+
+        setLoginData({email: '', password: ''});
+        setRememberCheck(false);
+        onOpenChange(false);
+    }
+
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className='sm:max-w-sm flex flex-col'>
                 <DialogHeader className='mb-2'>
                     <DialogTitle className='flex items-center text-xl'>Welcome back</DialogTitle>
                 </DialogHeader>
-                <div className='flex flex-col items-stretch justify-between flex-1 gap-4'>
+                <form className='flex flex-col items-stretch justify-between flex-1 gap-4' onSubmit={handleLoginSubmit}>
                     <div>
                         <div className='mb-2'>Email</div>
                         <div className='block relative'>
                             <AtSign className='absolute left-2.5 top-3 h-4 w-4' />
                             <Input
+                                id='email'
                                 type='email'
                                 placeholder='Enter your Email'
                                 className='text-sm pl-8 bg-muted/50 border-0'
@@ -44,6 +56,7 @@ const LoginPanel: React.FC<LoginPanelProps> = ({open, onOpenChange}: LoginPanelP
                         <div className='block relative'>
                             <Lock className='absolute left-2.5 top-3 h-4 w-4' />
                             <Input
+                                id='password'
                                 type='password'
                                 placeholder='Enter your Password'
                                 className='text-sm pl-8 bg-muted/50 border-0'
@@ -65,7 +78,7 @@ const LoginPanel: React.FC<LoginPanelProps> = ({open, onOpenChange}: LoginPanelP
                         </span>
                         <a href='#' className='text-sm hover:game-text-primary'>Forgot password?</a>
                     </div>
-                    <Button variant='secondary' className='mt-4 p-6'> Sign In</Button>
+                    <Button type='submit' variant='secondary' className='mt-4 p-6'> Sign In</Button>
                     <div className='flex items-center justify-center gap-2 mt-2'>
                         <span className='text-sm'>Don't have an account?</span>
                         <a href='#' className='text-sm font-bold text-primary hover:underline'>Sign Up</a>
@@ -73,7 +86,7 @@ const LoginPanel: React.FC<LoginPanelProps> = ({open, onOpenChange}: LoginPanelP
                     <div className='flex items-center justify-center m-2'>
                         <span className='text-sm'>Or With</span>
                     </div>
-                </div>
+                </form>
                 <DialogFooter className='flex flex-row justify-center sm:items-center sm:justify-center sm:gap-2 gap-4'>
                     <Button variant='outline' className='p-6'>
                         <FcGoogle /> Google
