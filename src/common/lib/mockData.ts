@@ -42,22 +42,22 @@ export const mockGames: Game[] = [
     },
     {
         id: 3,
-        title: 'Space Colony',
-        description: 'Build and manage your own space colony on distant planets. Research new technologies, manage resources, and ensure the survival of your colonists.',
-        price: 39.99,
-        discountedPrice: 29.99,
-        releaseDate: '2023-12-20',
-        developer: 'Colony Games',
-        publisher: 'Space Entertainment',
-        genres: ['Strategy', 'Simulation', 'Management'],
-        tags: ['Space', 'Colony', 'Building'],
+        title: 'Ocean Explorer',
+        description: 'Dive into the depths of the ocean in this stunning underwater exploration game. Discover ancient ruins, mysterious creatures, and hidden treasures.',
+        price: 34.99,
+        discountedPrice: 27.99,
+        releaseDate: '2023-10-15',
+        developer: 'Deep Blue Studios',
+        publisher: 'Marine Entertainment',
+        genres: ['Adventure', 'Exploration', 'Simulation'],
+        tags: ['Underwater', 'Open World', 'Discovery'],
         platforms: ['PC', 'PlayStation', 'Xbox'],
-        rating: 4.6,
-        coverImage: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop',
+        rating: 4.7,
+        coverImage: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=2940&auto=format&fit=crop',
         screenshots: [
-            'https://cdnb.artstation.com/p/assets/images/images/011/423/951/large/antoine-van-bergen-hyperion-a3-03.jpg',
-            'https://as2.ftcdn.net/v2/jpg/11/17/46/83/1000_F_1117468345_w6lYi5DTiF4BkeEIdI2WRruPob7kHraT.jpg',
-            'https://as2.ftcdn.net/v2/jpg/12/56/52/07/1000_F_1256520736_bAF5trxLVDZorklxGXOFuk1bJDWl1o0Y.jpg'
+            'https://ulstein.com/imager/images/References/9352/PHC-OceanExplorerArrival11_2021-10-19-115011_rtet_f906cb2ad194a18d4288d967373bffb8.jpg',
+            'https://images6.alphacoders.com/115/1158899.jpg',
+            'https://wallpapers.com/images/hd/navagio-ocean-desktop-rfvjn2g8dm4vayed.jpg'
         ],
         featured: true
     },
@@ -142,22 +142,22 @@ export const mockGames: Game[] = [
     },
     {
         id: 8,
-        title: 'Ocean Explorer',
-        description: 'Dive into the depths of the ocean in this stunning underwater exploration game. Discover ancient ruins, mysterious creatures, and hidden treasures.',
-        price: 34.99,
-        discountedPrice: 27.99,
-        releaseDate: '2023-10-15',
-        developer: 'Deep Blue Studios',
-        publisher: 'Marine Entertainment',
-        genres: ['Adventure', 'Exploration', 'Simulation'],
-        tags: ['Underwater', 'Open World', 'Discovery'],
+        title: 'Space Colony',
+        description: 'Build and manage your own space colony on distant planets. Research new technologies, manage resources, and ensure the survival of your colonists.',
+        price: 39.99,
+        discountedPrice: 29.99,
+        releaseDate: '2023-12-20',
+        developer: 'Colony Games',
+        publisher: 'Space Entertainment',
+        genres: ['Strategy', 'Simulation', 'Management'],
+        tags: ['Space', 'Colony', 'Building'],
         platforms: ['PC', 'PlayStation', 'Xbox'],
-        rating: 4.7,
-        coverImage: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=2940&auto=format&fit=crop',
+        rating: 4.6,
+        coverImage: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop',
         screenshots: [
-            'https://ulstein.com/imager/images/References/9352/PHC-OceanExplorerArrival11_2021-10-19-115011_rtet_f906cb2ad194a18d4288d967373bffb8.jpg',
-            'https://images6.alphacoders.com/115/1158899.jpg',
-            'https://wallpapers.com/images/hd/navagio-ocean-desktop-rfvjn2g8dm4vayed.jpg'
+            'https://cdnb.artstation.com/p/assets/images/images/011/423/951/large/antoine-van-bergen-hyperion-a3-03.jpg',
+            'https://as2.ftcdn.net/v2/jpg/11/17/46/83/1000_F_1117468345_w6lYi5DTiF4BkeEIdI2WRruPob7kHraT.jpg',
+            'https://as2.ftcdn.net/v2/jpg/12/56/52/07/1000_F_1256520736_bAF5trxLVDZorklxGXOFuk1bJDWl1o0Y.jpg'
         ],
         featured: true
     },
@@ -356,7 +356,8 @@ export const mockGames: Game[] = [
             'https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2940&auto=format&fit=crop',
             'https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2940&auto=format&fit=crop',
             'https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2940&auto=format&fit=crop'
-        ]
+        ],
+        featured: true
     },
     {
         id: 19,
