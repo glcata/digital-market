@@ -32,6 +32,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Generate changelog from previous tag
+        run: |
+          echo "## Changelog" > ${{ github.workspace }}/CHANGELOG.txt
+          echo "" >> ${{ github.workspace }}/CHANGELOG.txt
+          git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:'- %s' >> ${{ github.workspace }}/CHANGELOG.txt
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -64,12 +70,6 @@ jobs:
         id: get_tag
         run: |
           echo "tag=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
-
-      - name: Generate changelog from previous tag
-        run: |
-          echo "## Changelog" > ${{ github.workspace }}/CHANGELOG.txt
-          echo "" >> ${{ github.workspace }}/CHANGELOG.txt
-          git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:'- %s' >> ${{ github.workspace }}/CHANGELOG.txt
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
