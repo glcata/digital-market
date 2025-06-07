@@ -2,7 +2,7 @@ import {AxiosError} from 'axios';
 import {BaseQueryFn} from '@reduxjs/toolkit/query';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const BaseQuery = (): BaseQueryFn<any, any, unknown> => {
+export const BaseQuery = (): BaseQueryFn<any, any> => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return async (endpoint: any) => {
         try {
