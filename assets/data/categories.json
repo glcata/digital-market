@@ -1,0 +1,54 @@
+{
+  "timestamp": "2025-06-08T14:30:00.000Z",
+  "status": "completed",
+  "content": [
+    {
+      "id": 1,
+      "name": "Action",
+      "slug": "action",
+      "image": "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?q=80&w=2940&auto=format&fit=crop"
+    },
+    {
+      "id": 2,
+      "name": "Adventure",
+      "slug": "adventure",
+      "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2884&auto=format&fit=crop"
+    },
+    {
+      "id": 3,
+      "name": "RPG",
+      "slug": "rpg",
+      "image": "https://images.unsplash.com/photo-1551029506-0807df4e2031?q=80&w=2891&auto=format&fit=crop"
+    },
+    {
+      "id": 4,
+      "name": "Strategy",
+      "slug": "strategy",
+      "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/03/endless-legend-city.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Sports",
+      "slug": "sports",
+      "image": "https://www.buzztime.com/business/wp-content/uploads/2015/09/interactive-sports-games-750-x-340.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Simulation",
+      "slug": "simulation",
+      "image": "https://i.pcmag.com/imagery/roundups/05jeQF8mdJPdJduVAxQDIGb-1..v1620155938.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Arcade",
+      "slug": "Arcade",
+      "image": "https://images.unsplash.com/photo-1544785349-c4a5301826fd?q=80&w=2938&auto=format&fit=crop"
+    },
+    {
+      "id": 8,
+      "name": "Racing",
+      "slug": "racing",
+      "image": "https://images.unsplash.com/photo-1622185135505-2d795003994a?q=80&w=2940&auto=format&fit=crop"
+    }
+  ]
+}
