@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 import {Gamepad2, Menu, Search, ShoppingCart, User} from 'lucide-react';
 import {Button} from '@/common/components/@radix-ui/button';
 import {Input} from '@/common/components/@radix-ui/input';
-import {Sheet, SheetContent, SheetTrigger} from '@/common/components/@radix-ui/sheet';
+import {Sheet, SheetClose, SheetContent, SheetTrigger} from '@/common/components/@radix-ui/sheet';
 import {useMediaQuery} from '@/common/hooks/useMediaQuery';
 import {CartDialog} from '@/common/components/Cart';
 import {useAppDispatch, useAppSelector} from '@/common/hooks/useRedux';
@@ -89,7 +89,7 @@ const Header = () => {
                                     <Menu className='h-5 w-5' />
                                 </Button>
                             </SheetTrigger>
-                            <SheetContent side='right' className='w-[80%] sm:w-[350px]'>
+                            <SheetContent side='right' className='w-[70%] sm:w-[350px]'>
                                 <nav className='flex flex-col items-center space-y-4 mt-8'>
                                     <div className='relative w-full mb-6'>
                                         <Search className='absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground' />
@@ -105,9 +105,8 @@ const Header = () => {
                                         <Link
                                             key={link.name}
                                             to={link.path}
-                                            className='text-base font-medium transition-colors hover:text-primary py-2'
-                                        >
-                                            {link.name}
+                                            className='text-base font-medium transition-colors hover:text-primary py-2'>
+                                            <SheetClose>{link.name}</SheetClose>
                                         </Link>
                                     ))}
                                 </nav>

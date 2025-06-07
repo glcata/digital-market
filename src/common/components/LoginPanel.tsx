@@ -32,7 +32,7 @@ const LoginPanel: React.FC<LoginPanelProps> = ({open, onOpenChange}: LoginPanelP
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className='sm:max-w-sm flex flex-col'>
+            <DialogContent className='sm:max-w-sm flex flex-col' aria-describedby={''}>
                 <DialogHeader className='mb-2'>
                     <DialogTitle className='flex items-center text-xl'>Welcome back</DialogTitle>
                 </DialogHeader>

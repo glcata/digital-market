@@ -4,6 +4,7 @@ import {X} from 'lucide-react'
 import * as React from 'react'
 
 import {cn} from '@/common/lib/utils'
+import {DialogTitle} from '@/common/components/@radix-ui/dialog';
 
 const Sheet = SheetPrimitive.Root
 
@@ -57,9 +58,11 @@ const SheetContent = React.forwardRef<
 >(({ side = "right", className, children, ...props }, ref) => (
   <SheetPortal>
     <SheetOverlay />
+    <DialogTitle/>
     <SheetPrimitive.Content
       ref={ref}
       className={cn(sheetVariants({ side }), className)}
+      aria-describedby={''}
       {...props}
     >
       {children}
