@@ -1,35 +1,25 @@
 import {BaseApi} from '@/app/api/BaseApi';
 import {BaseApiClientConfig} from '@/app/api/BaseApiClientConfig';
-import {Category, Game} from '@/common/store';
-
-interface ErrorResponse {
-    status: number;
-    data: string;
-}
+import {Category, Game, ResponseDataModel} from '@/common/store';
 
 export const gamesApi = BaseApi.injectEndpoints({
     endpoints: (builder) => ({
         getGames: builder.query<Game[], void>({
-            queryFn: async () => await BaseApiClientConfig().getGames(),
+            query: () => async () => await BaseApiClientConfig().getGames(),
+            transformResponse: (response: ResponseDataModel<Game[]>) => response.content,
             providesTags: ['Games'],
         }),
         getGameById: builder.query<Game, number>({
-            queryFn: async (id) => {
-                const getById = await BaseApiClientConfig().getGameById(id);
-
-                if (getById) return {data: getById};
-
-                return {
-                    error: {
-                        status: 404,
-                        data: 'Game not found'
-                    } as ErrorResponse
-                };
+            query: (id: number) => async () => await BaseApiClientConfig().getGameById(id),
+            transformResponse: (response: ResponseDataModel<Game[]>): Game => {
+                const [game] = response.content;
+                return game;
             },
             providesTags: (_result, _error, id) => [{type: 'Games', id}]
         }),
         getFeaturedGames: builder.query<Game[], void>({
             query: () => async () => await BaseApiClientConfig().getFeaturedGames(),
+            transformResponse: (response: ResponseDataModel<Game[]>): Game[] => response.content,
             providesTags: ['Games']
         }),
         getCategories: builder.query<Category[], void>({

@@ -1,6 +1,12 @@
 type SortOptions = 'relevance' | 'price-low' | 'price-high' | 'rating' | 'new';
 type Platform = 'PC' | 'PlayStation' | 'Xbox' | 'Nintendo' | 'Mobile' | 'Linux' | 'Mac';
 
+type ResponseDataModel<T> = {
+    timestamp: string,
+    status: string,
+    content: T
+}
+
 interface Game {
     id: number;
     title: string;
@@ -56,4 +62,4 @@ interface GameState {
     pagination: Pagination;
 }
 
-export type {SortOptions, Platform, Game, Category, Pagination, Cart, CartItem, GameState};
+export type {ResponseDataModel, SortOptions, Platform, Game, Category, Pagination, Cart, CartItem, GameState};
