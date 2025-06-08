@@ -1,34 +1,54 @@
 import {AxiosInstance} from 'axios';
-import {categories, mockGames} from '@/common/lib/mockData';
-import {Category, Game} from '@/common/store';
+import {Category, Game, ResponseDataModel} from '@/common/store';
 
-const DELAY = 500; // Simulated delay for API calls
+const DELAY = 200;
+// Since the data comes from the same server, we simulate a network delay to test fallback UI and observe RTK Query's caching in action.
 
-// @ts-expect-error ignore client
+interface ErrorResponse {
+    status: number;
+    data: string;
+}
+
 export const gameCreateApi = (client: AxiosInstance) => {
     const
-        getGames = async () => {
-            // await client.get('/games')
-            //     .then(res => {
-            //         console.log(res.data);
-            //         return res.data;
-            //     })
-            //     .catch(error => console.error(error));
-            return new Promise<{ data: Game[] }>((resolve) =>
-                setTimeout(() => resolve({data: mockGames}), DELAY));
+        getGames = async (): Promise<ResponseDataModel<Game[]>> => {
+            return await client.get('/data/games.json')
+                .then(res => new Promise<typeof res>(resolve => setTimeout(() => resolve(res), DELAY)))
+                .then(res => res.data)
+                .catch(error => console.error(error))
         },
 
-        getGameById = async (id: number) =>
-            await new Promise<Game | undefined>(res =>
-                setTimeout(() => res(mockGames.find(game => game.id === id)), DELAY)),
+        getGameById = async (id: number): Promise<ResponseDataModel<Game[]>> => {
+            return await client.get('/data/games.json')
+                .then(res => new Promise<typeof res>(resolve => setTimeout(() => resolve(res), DELAY)))
+                .then(res => {
+                    const findGame = res.data.content.find((game: Game) => game.id === id);
+                    return {...res.data, content: [findGame]};
+                })
+                .catch(_ => console.error({
+                    error: {
+                        status: 404,
+                        data: 'Game not found'
+                    } as ErrorResponse
+                }))
+        },
 
-        getFeaturedGames = async () =>
-            await new Promise<Game[]>(res =>
-                setTimeout(() => res(mockGames.filter(game => game.featured)), DELAY)),
+        getFeaturedGames = async (): Promise<ResponseDataModel<Game[]>> => {
+            return await client.get('/data/games.json')
+                .then(res => new Promise<typeof res>(resolve => setTimeout(() => resolve(res), DELAY)))
+                .then(res => {
+                    const featuredGames = res.data.content.filter((game: Game) => game.featured);
+                    return {...res.data, content: [...featuredGames]};
+                })
+                .catch(error => console.error(error))
+        },
 
-        getCategories = async () =>
-            await new Promise<Category[]>(res =>
-                setTimeout(() => res(categories), DELAY));
+        getCategories = async (): Promise<Category[]> => {
+            return await client.get('/data/categories.json')
+                .then(res => new Promise<typeof res>(resolve => setTimeout(() => resolve(res), DELAY)))
+                .then(res => res.data.content)
+                .catch(error => console.error(error))
+        }
 
     return {
         getGames,

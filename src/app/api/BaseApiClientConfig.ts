@@ -8,7 +8,7 @@ const DEFAULT_RETRY_DELAY = 1000;
 export const BaseApiClientConfig = () => {
 
     const client: AxiosInstance = axios.create({
-        baseURL: import.meta.env.VITE_APP_API_BASE_URL,
+        baseURL: `${import.meta.env.VITE_APP_API_BASE_URL}/mihaxor/digital-market/refs/heads/master/assets`,
         allowAbsoluteUrls: false
     });
 
