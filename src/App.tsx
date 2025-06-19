@@ -2,6 +2,7 @@ import Header from '@/common/components/Header';
 import Footer from '@/common/components/Footer';
 import {Outlet} from 'react-router';
 import {SpeedInsights} from '@vercel/speed-insights/react';
+import ReactScan from '@/app/ReactScan';
 import '@/app/app.css';
 
 const App = () => (
@@ -12,6 +13,7 @@ const App = () => (
                 <Outlet />
             </div>
         </main>
+        <ReactScan />
         <SpeedInsights />
         <Footer />
     </div>
