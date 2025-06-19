@@ -27,11 +27,11 @@
         "Xbox"
       ],
       "rating": 4.5,
-      "coverImage": "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/astral-legend-cover.avif",
+      "coverImage": "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/astral-legends-cover.avif",
       "screenshots": [
-        "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/astral-legend-cover.avif",
-        "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/astral-legend-cover.avif",
-        "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/astral-legend-cover.avif"
+        "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/astral-legends-1.avif",
+        "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/astral-legends-2.avif",
+        "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/astral-legends-3.avif"
       ]
     },
     {
@@ -57,11 +57,11 @@
         "Xbox"
       ],
       "rating": 4.3,
-      "coverImage": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2884&auto=format&fit=crop",
+      "coverImage": "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/medieval-dynasty-cover.avif",
       "screenshots": [
-        "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=2940&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2884&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1551029506-0807df4e2031?q=80&w=2891&auto=format&fit=crop"
+        "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/medieval-dynasty-1.avif",
+        "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/medieval-dynasty-2.avif",
+        "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/medieval-dynasty-3.avif"
       ]
     },
     {
@@ -89,11 +89,11 @@
         "Xbox"
       ],
       "rating": 4.7,
-      "coverImage": "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=2940&auto=format&fit=crop",
+      "coverImage": "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/ocean-explorer-cover.avif",
       "screenshots": [
-        "https://ulstein.com/imager/images/References/9352/PHC-OceanExplorerArrival11_2021-10-19-115011_rtet_f906cb2ad194a18d4288d967373bffb8.jpg",
-        "https://images6.alphacoders.com/115/1158899.jpg",
-        "https://wallpapers.com/images/hd/navagio-ocean-desktop-rfvjn2g8dm4vayed.jpg"
+        "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/ocean-explorer-1.jpg",
+        "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/ocean-explorer-2.jpg",
+        "https://raw.githubusercontent.com/mihaxor/digital-market/refs/heads/master/assets/images/ocean-explorer-3.jpg"
       ],
       "featured": true
     },
