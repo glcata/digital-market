@@ -1,7 +1,7 @@
 {
   "name": "digital-market",
   "private": true,
-  "version": "1.0.31",
+  "version": "1.0.32",
   "type": "module",
   "scripts": {
     "local": "open http://localhost:3000 && vite --mode dev",
