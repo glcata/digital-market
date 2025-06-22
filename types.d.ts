@@ -3,7 +3,7 @@ declare global {
         readonly env: {
             VITE_APP_VERSION: string,
             VITE_APP_API_BASE_URL: string,
-            VITE_APP_STAGE: string
+            MODE: string
         }
     }
 

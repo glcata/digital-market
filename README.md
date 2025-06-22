@@ -22,7 +22,7 @@ The application is available live on Vercel: [Digital Market Demo](https://digit
 
 ## 📋 System Requirements
 
-- Node.js (version 18 or higher)
+- Node.js (version 22 or higher)
 - npm or yarn
 
 ## 🚀 Installation

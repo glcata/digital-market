@@ -4,7 +4,7 @@
   "version": "1.0.31",
   "type": "module",
   "scripts": {
-    "local": "open http://localhost:3000 && vite",
+    "local": "open http://localhost:3000 && vite --mode dev",
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "vitest run",
