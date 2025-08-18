@@ -22,7 +22,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className='mt-6 text-center text-sm text-muted-foreground'>
-                    <strong>© <a href='https://linkedin.com/in/catalin-glavan' className='game-text-primary'>Catalin Glavan</a> {currentYear} | React Developer |
+                    <strong>© {currentYear} <a href='https://linkedin.com/in/catalin-glavan' className='game-text-primary'>Catalin Glavan</a> |
                         <a href='mailto:glmihaicata@gmail.com' className='game-text-primary-reverse'> glmihaicata@gmail.com</a></strong> <br />
                     All rights reserved.
                 </div>
